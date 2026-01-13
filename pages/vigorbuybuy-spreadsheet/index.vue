@@ -46,7 +46,7 @@ onUnmounted(() => {
             </div>
 
             <p class="text-gray-600 mb-15">
-                Browse 8,406+ verified products from Taobao, 1688, and Weidian. Links verified weekly, updated daily.
+                Browse 8,407+ verified products from Taobao, 1688, and Weidian. Links verified weekly, updated daily.
             </p>
             
             <div class="header-flooter">
