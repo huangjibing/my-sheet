@@ -1,0 +1,109 @@
+steps:
+  - name: gcr.io/cloud-builders/git
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "replacing git config ..."
+        git config --global url."https://github.com/".insteadOf git@github.com:
+        git config --global url."https://".insteadOf git://
+        echo "replacing git config done"
+  # # Install dependencies
+  - name: node:18-slim
+    args: ["npm", "install"]
+    timeout: 1200s
+  # Build package
+  - name: node:18-slim
+    args: ["npm", "run", "build-$_ENV"]
+    timeout: 1200s
+    #allow_failure: true
+  # upload to google storage
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        cwd="$(pwd)"
+        cd ${cwd}/.output/public && gsutil -h "Cache-Control: public, immutable" -m cp -z "js,css,png,jpg,html,json,ico,txt" -r * gs://vigorbuy/dist/vigorbuysheet/$_ENV/
+
+        domain="dev.vigorbuysheet.com/"
+        lb_name="lb-vigorbuy"
+        if [ "$_ENV" == "prod" ]; then
+          domain="vigorbuysheet.com/"
+          lb_name="lb-vigorbuy"
+        fi
+
+        gcloud compute url-maps invalidate-cdn-cache ${lb_name} --async --path "/*" --async --host "${domain}" --project vigorbuy
+
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-f",
+        "Dockerfile",
+        "--build-arg",
+        "SERVER_ENV=$_ENV",
+        "-t",
+        "gcr.io/vigorbuy/$_ENV-vigorbuysheet",
+        ".",
+      ]
+  # Push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/vigorbuy/$_ENV-vigorbuysheet"]
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "$_ENV-vigorbuysheet"
+      - "--image"
+      - "gcr.io/vigorbuy/$_ENV-vigorbuysheet"
+      - "--region"
+      - "northamerica-northeast1"
+  # Notify developers
+  - name: gcr.io/cloud-builders/git
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        echo "sending notification ..."
+        url='https://open.feishu.cn/open-apis/bot/v2/hook/ed8ab341-a470-4601-9159-cd903a3eca89'
+        version="$(git rev-parse --short HEAD)"
+        repo="$REPO_NAME"
+        branch="$BRANCH_NAME"
+        gitlog="$(git log -1 --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'提交: %h, 作者: %aN (%ad), %s')"
+
+        # 构建日志
+        build_logs_url="https://console.cloud.google.com/cloud-build/builds/${BUILD_ID}?project=${PROJECT_ID}"
+
+        # Cloud Run URL
+        cloud_run_url=$(gcloud run services list --platform=managed --region=$_DEPLOY_REGION --project=$PROJECT_ID --filter="SERVICE:$_SERVICE_NAME" --format='value(URL)')
+
+        # Cloud Run 实例日志
+        cloud_run_logs_url="https://console.cloud.google.com/logs/query;query=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22$_SERVICE_NAME%22?project=${PROJECT_ID}"
+
+        msg="{\"msg_type\":\"post\",\"content\":{\"post\":{\"zh_cn\":{
+          \"title\":\"${_SERVICE_NAME} 发布\",
+          \"content\":[[
+            {\"tag\":\"text\",\"text\":\"代码: $repo, 分支: \"},
+            {\"tag\":\"a\",\"text\":\"$branch\",\"href\":\"https://github.com/vigorbuy/$repo/tree/$branch\"},
+            {\"tag\":\"text\",\"text\":\", 版本: \"},
+            {\"tag\":\"a\",\"text\":\"$version\",\"href\":\"https://github.com/vigorbuy/$repo/commit/$version\"}
+          ],[
+            {\"tag\":\"text\",\"text\":\"$gitlog\"}
+          ],[
+            {\"tag\":\"text\",\"text\":\"Cloud Run 地址: \"},
+            {\"tag\":\"a\",\"text\":\"$cloud_run_url\",\"href\":\"$cloud_run_url\"}
+          ],[
+            {\"tag\":\"text\",\"text\":\"构建日志: \"},
+            {\"tag\":\"a\",\"text\":\"点击查看 Cloud Build Logs\",\"href\":\"$build_logs_url\"}
+          ],[
+            {\"tag\":\"text\",\"text\":\"运行实例日志: \"},
+            {\"tag\":\"a\",\"text\":\"查看 Cloud Run Revision Logs\",\"href\":\"$cloud_run_logs_url\"}
+          ]]
+        }}}}}"
+        curl -H "Content-type: application/json" -d "$msg" "$url"
+options:
+  default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
