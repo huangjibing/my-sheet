@@ -42,7 +42,7 @@ onUnmounted(() => {
             </div>
 
             <div class="mb-10">
-                <h1>Vigorbuy Spreadsheets</h1>
+                <h1>Vigorbuy Spreadsheet</h1>
             </div>
 
             <p class="text-gray-600 mb-15">
