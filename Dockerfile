@@ -1,20 +1,18 @@
-# ---------- 构建阶段 ----------
 FROM node:18-alpine AS builder
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+RUN apk add --no-cache python3 make g++
+
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
+
 COPY . .
 RUN npm run build
 
-# ---------- 运行阶段 ----------
 FROM node:18-alpine
-
 WORKDIR /app
 COPY --from=builder /app/.output ./.output
-COPY --from=builder /app/package.json ./package.json
 
 ENV NODE_ENV=production
 EXPOSE 3000
-
 CMD ["node", ".output/server/index.mjs"]
