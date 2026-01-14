@@ -27,11 +27,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && ln -sf /usr/bin/python3 /usr/bin/python \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 5. 验证网络和源连通性（调试用，可保留）
-RUN echo "测试 npm 源连通性..." \
-    && curl -I https://registry.npmjs.org > /dev/null 2>&1 \
-    && echo "源连通性测试通过" || (echo "源连通性测试失败" && exit 1)
-
 # 6. 安装依赖（对齐 Cloud Build 的 root 权限，无需 unsafe-perm）
 COPY package.json package-lock.json* ./
 RUN npm cache clean --force \
