@@ -1,52 +1,62 @@
-# 构建阶段（GitHub Actions海外环境）
-FROM node:18-alpine AS builder
+# 构建阶段：用debian系的slim镜像（GitHub CI最稳定）
+FROM node:18-slim AS builder
 WORKDIR /app
-# 关键：用环境变量直接设置npm源（绕过npm config命令）
 ENV TZ=UTC \
+    # 直接用环境变量配置npm，避开所有config命令
     NPM_CONFIG_REGISTRY=https://registry.npmjs.org \
     NPM_CONFIG_UNSAFE_PERM=true \
-    NPM_CONFIG_STRICT_SSL=false \
-    NPM_CONFIG_CACHE=/tmp/npm-cache
+    NPM_CONFIG_STRICT_SSL=false
 
-# 第一步：先验证npm环境（排查核心问题）
-RUN node -v && npm -v \
-    # 安装构建依赖（确保基础环境完整）
-    && apk add --no-cache python3 make g++ git curl \
+# 安装debian系构建依赖（GitHub CI无兼容性问题）
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 \
+    make \
+    g++ \
+    git \
+    curl \
     && ln -sf python3 /usr/bin/python \
-    # 测试npm源连通性（GitHub Actions海外必通）
-    && curl -I https://registry.npmjs.org/npm
+    # 清理apt缓存，减小镜像体积
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 缓存依赖（极简命令，避免任何多余参数）
+# 先验证npm+网络（提前暴露问题）
+RUN node -v && npm -v && curl -I https://registry.npmjs.org/npm
+
+# 缓存依赖（极简命令，无任何多余参数）
 COPY package.json package-lock.json ./
-# 用--registry直接指定源，彻底绕过config问题
-RUN npm install --no-fund --no-audit --registry=https://registry.npmjs.org
+# 仅保留最核心参数，避免任何兼容性问题
+RUN npm install --no-fund --no-audit
 
-# 构建项目（仅执行核心命令）
+# 构建项目
 COPY . .
-RUN npm run build && rm -rf node_modules /tmp/npm-cache
+RUN npm run build && rm -rf node_modules
 
-# 运行阶段（海外宝塔服务器）
-FROM node:18-alpine AS runner
+# 运行阶段：同样用slim镜像（和构建阶段一致）
+FROM node:18-slim AS runner
 WORKDIR /app
 ENV TZ=UTC \
     NODE_ENV=production \
     NUXT_HOST=0.0.0.0 \
     NUXT_PORT=3000
 
-# 创建非root用户
-RUN addgroup -g 1001 -S nodejs && adduser -S nuxt -u 1001 -G nodejs
-RUN chown -R nuxt:nodejs /app
+# 创建非root用户（符合GitHub安全规范）
+RUN groupadd --system --gid 1001 nodejs && \
+    useradd --system --uid 1001 --gid nodejs nuxt && \
+    chown -R nuxt:nodejs /app
 USER nuxt
 
-# 复制产物
+# 复制构建产物
 COPY --from=builder /app/.output ./.output
 
 # 暴露端口
 EXPOSE 3000
 
-# 健康检查（极简版，避免依赖缺失）
+# 极简健康检查（仅用node内置模块）
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-    CMD node -e "try { require('http').get('http://localhost:3000/_health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)); } catch (e) { process.exit(1); }"
+    CMD node -e "try { \
+        const req = require('http').request({host:'localhost',port:3000,path:'/_health'}, (res) => process.exit(res.statusCode===200?0:1)); \
+        req.on('error', () => process.exit(1)); \
+        req.end(); \
+    } catch (e) { process.exit(1); }"
 
 # 启动命令
 CMD ["node", ".output/server/index.mjs"]
