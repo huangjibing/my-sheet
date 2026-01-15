@@ -1,4 +1,4 @@
-FROM node:20-slim AS builder
+FROM node:18-slim AS builder
 
 WORKDIR /app
 
@@ -9,12 +9,12 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 COPY . .
 RUN npm run build
 
-FROM node:20-slim
+FROM node:18-slim
 WORKDIR /app
 
 ENV NODE_ENV=production
