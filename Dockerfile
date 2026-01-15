@@ -1,4 +1,4 @@
-FROM node:18-slim AS builder
+FROM ghcr.io/nodejs/node:18-alpine
 
 WORKDIR /app
 
@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
   make \
   g++ \
   && rm -rf /var/lib/apt/lists/*
-  
+
+COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
