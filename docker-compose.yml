@@ -1,8 +1,0 @@
-version: '3'
-services:
-  nuxt3:
-    image: yourname/nuxt3-app:latest
-    container_name: nuxt3-app
-    restart: always
-    ports:
-      - "3000:3000"
