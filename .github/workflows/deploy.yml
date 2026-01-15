@@ -1,7 +1,7 @@
 name: Nuxt3 CI/CD to 宝塔
 on:
   push:
-    branches: [main]  # 仅main分支触发部署
+    branches: [master]  # 仅main分支触发部署
 
 jobs:
   build-and-deploy:
