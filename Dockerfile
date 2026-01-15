@@ -1,5 +1,5 @@
-# ========== 构建阶段（Builder）：命名阶段，优化依赖安装和构建 ==========
-FROM ghcr.io/nodejs/node:18-alpine AS builder
+# ========== 构建阶段（Builder）：改用Docker Hub官方镜像，解决403问题 ==========
+FROM node:18-alpine AS builder
 
 # 设置工作目录，赋予足够权限（适配GitHub CI的权限限制）
 WORKDIR /app
@@ -13,6 +13,7 @@ RUN apk add --no-cache \
     && ln -sf python3 /usr/bin/python  # 统一python命令指向python3
 
 # 优化npm配置（适配GitHub网络/权限，提升安装稳定性）
+# 优先用npm官方源，国内环境可替换为https://registry.npmmirror.com
 RUN npm config set registry https://registry.npmjs.org \
     && npm config set cache /tmp/npm-cache \
     && npm config set strict-ssl false \
@@ -22,7 +23,6 @@ RUN npm config set registry https://registry.npmjs.org \
 COPY package.json package-lock.json ./
 
 # 执行npm install（修复行续符+注释冲突问题）
-# 注释放在行首/独立行，避免干扰行续符
 RUN npm install \
     --no-fund \
     --no-audit \
@@ -35,7 +35,7 @@ RUN npm run build \
     && rm -rf node_modules  # 清理构建阶段的依赖，仅保留构建产物
 
 # ========== 运行阶段：精简镜像 ==========
-FROM ghcr.io/nodejs/node:18-slim AS runner
+FROM node:18-slim AS runner
 
 # 设置工作目录，创建非root用户
 WORKDIR /app
@@ -56,9 +56,9 @@ USER nodejs
 # 暴露端口
 EXPOSE 3000
 
-# 健康检查
-HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-    CMD node -e "try { require('http').get('http://localhost:3000/health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)); } catch (e) { process.exit(1); }"
+# 健康检查（Nuxt3默认健康检查路径可根据实际调整）
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD node -e "try { require('http').get('http://localhost:3000/_health', (res) => process.exit(res.statusCode === 200 ? 0 : 1)); } catch (e) { process.exit(1); }"
 
 # 启动命令
 CMD ["node", ".output/server/index.mjs"]
