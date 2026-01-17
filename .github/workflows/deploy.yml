@@ -32,7 +32,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # 5. 部署到宝塔服务器（替换容器镜像，给步骤加ID用于判断状态）
+      # 5. 部署到宝塔服务器（替换容器镜像，用docker run创建容器）
       - name: Deploy to 宝塔服务器
         id: deploy
         uses: appleboy/ssh-action@master
@@ -45,48 +45,58 @@ jobs:
             # 第一步：拉取最新镜像
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
             
-            # 第二步：定义容器名（已指定为你的实际容器名）
+            # 第二步：定义容器名和网络（和原docker-compose配置一致）
             CONTAINER_NAME="vigorbuysheet-docker"
+            NETWORK_NAME="nuxt-network"
             
-            # 第三步：检查容器是否存在，存在则替换镜像并重启
+            # 第三步：检查自定义网络是否存在，不存在则创建（和原配置的nuxt-network一致）
+            if ! docker network ls --format "{{.Name}}" | grep -q "$NETWORK_NAME"; then
+              docker network create --driver bridge $NETWORK_NAME
+              echo "自定义网络 $NETWORK_NAME 创建成功"
+            fi
+            
+            # 第四步：检查容器是否存在，存在则替换镜像并重启；不存在则用docker run创建
             if docker ps -a --format "{{.Names}}" | grep -q "$CONTAINER_NAME"; then
+              # 容器存在：替换镜像并重启
               docker stop $CONTAINER_NAME
               docker container update --image ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest $CONTAINER_NAME
               docker start $CONTAINER_NAME
               echo "容器 $CONTAINER_NAME 镜像已更新并重启"
             else
-              docker-compose up -d
-              echo "容器不存在，已创建新容器并启动"
+              # 容器不存在：用docker run创建（参数和原docker-compose.yml完全对齐）
+              docker run -d \
+                --name $CONTAINER_NAME \
+                --restart always \
+                --network $NETWORK_NAME \
+                -p 3000:3000 \
+                -e TZ=Asia/Shanghai \
+                -e NUXT_HOST=0.0.0.0 \
+                -e NUXT_PORT=3000 \
+                ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
+              echo "容器 $CONTAINER_NAME 已通过docker run创建并启动"
             fi
             
-            # 第四步：清理无用镜像（节省空间）
+            # 第五步：清理无用镜像（节省空间）
             docker system prune -f
 
       # 6. 打包+部署成功后推送飞书通知（仅成功时执行）
       - name: Send Feishu Success Notification
         if: steps.deploy.outcome == 'success'  # 仅部署步骤成功时触发
         env:
-          # 飞书机器人Webhook（需提前添加到GitHub Secrets，命名为FEISHU_WEBHOOK）
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
-          # Git核心信息
           REPO_NAME: ${{ github.repository }}
           BRANCH_NAME: ${{ github.ref_name }}
           COMMIT_ID: ${{ github.sha }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
           COMMIT_AUTHOR: ${{ github.event.head_commit.author.name }}
-          # 部署相关信息
           SERVER_HOST: ${{ secrets.SERVER_SSH_HOST }}
           CONTAINER_NAME: "vigorbuysheet-docker"
           DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
-          # GitHub Action日志链接（方便排查问题）
           ACTION_LOG_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          # 格式化短提交ID（如 abc1234，更易阅读）
           SHORT_COMMIT_ID=$(echo $COMMIT_ID | cut -c1-7)
-          # 部署完成时间
           DEPLOY_TIME=$(date +"%Y-%m-%d %H:%M:%S")
           
-          # 组装飞书富文本消息（排版清晰，关键信息加超链接）
           FEISHU_MSG=$(cat << EOF
           {
             "msg_type": "post",
@@ -112,7 +122,6 @@ jobs:
           EOF
           )
           
-          # 推送消息到飞书
           curl -X POST \
             -H "Content-Type: application/json" \
             -d "$FEISHU_MSG" \
