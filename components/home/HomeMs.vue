@@ -14,13 +14,13 @@
 
             <div class="homems-btn">
                 <div class="the-admin" @click="jumpPath('/vigorbuybuy-spreadsheet')">
-                    <span>Browse the Vigorbuy Spreadsheet</span>
+                    <span>Browse the Vigorbuy Spreadsheet Hjb</span>
                     <i class="icon iconfont icon-youjiantou ml-8"></i>
                 </div>
 
                 <div class="the-lw">
                     <i class="icon iconfont icon-liwuhuodong"></i>
-                    <span class="ml-5">Get Vigorbuy Coupons</span>
+                    <span class="ml-5">Get Vigorbuy Coupons Hjb</span>
                 </div>
             </div>
 

@@ -32,41 +32,39 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # 5. 部署到宝塔服务器（替换容器镜像，不重建容器）
+      # 5. 部署到宝塔服务器（替换容器镜像，给步骤加ID用于判断状态）
       - name: Deploy to 宝塔服务器
+        id: deploy
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SERVER_SSH_HOST }}
-          username: ${{ secrets.SERVER_SSH_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: ${{ secrets.SERVER_SSH_PORT }}
+          host: ${{ secrets.SERVER_SSH_HOST }}  # 服务器IP
+          username: ${{ secrets.SERVER_SSH_USER }}  # 服务器用户名（如root）
+          key: ${{ secrets.SERVER_SSH_KEY }}  # SSH密钥
+          port: ${{ secrets.SERVER_SSH_PORT }}  # SSH端口（默认22）
           script: |
             # 第一步：拉取最新镜像
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
             
-            # 第二步：定义容器名（需替换为你实际的容器名，可通过 docker ps 查看）
-            CONTAINER_NAME="vigorbuysheet-docker"  # 改为你的容器名，比如 docker-compose 中定义的服务名
+            # 第二步：定义容器名（已指定为你的实际容器名）
+            CONTAINER_NAME="vigorbuysheet-docker"
             
             # 第三步：检查容器是否存在，存在则替换镜像并重启
             if docker ps -a --format "{{.Names}}" | grep -q "$CONTAINER_NAME"; then
-              # 停止容器（不删除）
               docker stop $CONTAINER_NAME
-              # 替换容器使用的镜像（核心命令：--force 强制替换）
               docker container update --image ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest $CONTAINER_NAME
-              # 重启容器（保留原有配置：网络、卷、端口映射等）
               docker start $CONTAINER_NAME
               echo "容器 $CONTAINER_NAME 镜像已更新并重启"
             else
-              # 容器不存在时，才用docker-compose创建（兼容首次部署）
               docker-compose up -d
               echo "容器不存在，已创建新容器并启动"
             fi
             
             # 第四步：清理无用镜像（节省空间）
             docker system prune -f
-       # 6. 部署成功后推送飞书通知（仅成功时执行）
+
+      # 6. 打包+部署成功后推送飞书通知（仅成功时执行）
       - name: Send Feishu Success Notification
-        if: steps.deploy.outcome == 'success'  # 仅部署成功时触发
+        if: steps.deploy.outcome == 'success'  # 仅部署步骤成功时触发
         env:
           # 飞书机器人Webhook（需提前添加到GitHub Secrets，命名为FEISHU_WEBHOOK）
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
@@ -78,28 +76,33 @@ jobs:
           COMMIT_AUTHOR: ${{ github.event.head_commit.author.name }}
           # 部署相关信息
           SERVER_HOST: ${{ secrets.SERVER_SSH_HOST }}
+          CONTAINER_NAME: "vigorbuysheet-docker"
           DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
-          # GitHub Action日志链接
+          # GitHub Action日志链接（方便排查问题）
           ACTION_LOG_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          # 格式化短提交ID（如 abc1234）
+          # 格式化短提交ID（如 abc1234，更易阅读）
           SHORT_COMMIT_ID=$(echo $COMMIT_ID | cut -c1-7)
+          # 部署完成时间
+          DEPLOY_TIME=$(date +"%Y-%m-%d %H:%M:%S")
           
-          # 组装飞书富文本消息
+          # 组装飞书富文本消息（排版清晰，关键信息加超链接）
           FEISHU_MSG=$(cat << EOF
           {
             "msg_type": "post",
             "content": {
               "post": {
                 "zh_cn": {
-                  "title": "✅ Nuxt3 部署成功 | 宝塔服务器",
+                  "title": "✅ Nuxt3 打包部署成功 | 宝塔服务器",
                   "content": [
-                    [{"tag":"text","text":"📋 项目信息：${REPO_NAME}"}],
-                    [{"tag":"text","text":"🌿 部署分支：${BRANCH_NAME}"}],
+                    [{"tag":"text","text":"📋 项目：${REPO_NAME}"}],
+                    [{"tag":"text","text":"🌿 分支：${BRANCH_NAME}"}],
                     [{"tag":"text","text":"🔖 提交版本："},{"tag":"a","text":"${SHORT_COMMIT_ID}","href":"https://github.com/${REPO_NAME}/commit/${COMMIT_ID}"}],
                     [{"tag":"text","text":"✍️ 提交者：${COMMIT_AUTHOR} | 提交说明：${COMMIT_MSG}"}],
                     [{"tag":"text","text":"🖥️ 部署服务器：${SERVER_HOST}"}],
+                    [{"tag":"text","text":"📦 容器名：${CONTAINER_NAME}"}],
                     [{"tag":"text","text":"🐳 镜像版本：${DOCKER_IMAGE}"}],
+                    [{"tag":"text","text":"🕒 部署完成时间：${DEPLOY_TIME}"}],
                     [{"tag":"text","text":"📝 部署日志："},{"tag":"a","text":"查看GitHub Action日志","href":"${ACTION_LOG_URL}"}]
                   ]
                 }
