@@ -1,8 +1,8 @@
 version: '3.8'
 services:
   nuxt3-app:
-    image: 你的镜像地址  # 如docker.io/你的用户名/nuxt3-app:latest
-    container_name: nuxt3-app
+    image: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest  # 如docker.io/你的用户名/nuxt3-app:latest
+    container_name: vigorbuysheet-docker
     restart: always  # 宝塔崩溃自动重启
     ports:
       - "3000:3000"
