@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   devServer: {
     port: 3004,
     host: "0.0.0.0",
@@ -70,34 +71,18 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
-  css: ["@/style/reset.scss", "@/style/common.scss", '@/style/iconfont/iconfont.css'],
+  css: [
+    "@/style/reset.scss",
+    "@/style/common.scss",
+    '@/style/iconfont/iconfont.css'
+  ],
   modules: [
     "@pinia/nuxt",
-    "nuxt-gtag",
+    "@element-plus/nuxt",
     "@nuxtjs/tailwindcss",
-    "@element-plus/nuxt"
   ],
-  gtag: {
-    id: 'G-Y1YS0EXRLP',
-    config: {
-      send_page_view: true,
-      web_version: '0.0.0',
-    },
-    initCommands: [
-      [
-        'consent',
-        'default',
-        {
-          security_storage: 'granted',
-          analytics_storage: 'granted',
-          functionality_storage: 'granted',
-          personalization_storage: 'granted',
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted',
-          wait_for_update: 500,
-        },
-      ],
-    ],
-  },
+  // tailwindcss: {
+  //   exposeConfig: false, // 避免配置暴露导致的冲突
+  //   viewer: true // 对应你能打开的 _tailwind/ 页面，保持开启即可
+  // }
 });

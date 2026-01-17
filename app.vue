@@ -20,16 +20,15 @@
   };
 
   onBeforeMount(() => {
-    addListenerOfResize();
-    resizeListener();
-    window.addEventListener('resize', resizeListener);
+    // addListenerOfResize();
+    // resizeListener();
+    // window.addEventListener('resize', resizeListener);
   })
   onMounted(() => {
-    console.info(userStore.isMobile, '当前端')
   })
   onUnmounted(() => {
-    removeListenerOfResize();
-    window.removeEventListener('resize', resizeListener);
+    // removeListenerOfResize();
+    // window.removeEventListener('resize', resizeListener);
   })
 </script>
 <template>
