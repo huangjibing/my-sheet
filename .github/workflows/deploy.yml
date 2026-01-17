@@ -1,7 +1,7 @@
 name: Nuxt3 CI/CD to 宝塔
 on:
   push:
-    branches: [master]  # 仅master分支触发部署
+    branches: [master]  # 仅main分支触发部署
 
 jobs:
   build-and-deploy:
@@ -32,9 +32,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # 5. 部署到宝塔服务器（给步骤加ID，用于判断状态）
+      # 5. 部署到宝塔服务器（替换容器镜像，不重建容器）
       - name: Deploy to 宝塔服务器
-        id: deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_SSH_HOST }}
@@ -42,12 +41,30 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
+            # 第一步：拉取最新镜像
             docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
-            docker-compose down || true
-            docker-compose up -d
+            
+            # 第二步：定义容器名（需替换为你实际的容器名，可通过 docker ps 查看）
+            CONTAINER_NAME="vigorbuysheet-docker"  # 改为你的容器名，比如 docker-compose 中定义的服务名
+            
+            # 第三步：检查容器是否存在，存在则替换镜像并重启
+            if docker ps -a --format "{{.Names}}" | grep -q "$CONTAINER_NAME"; then
+              # 停止容器（不删除）
+              docker stop $CONTAINER_NAME
+              # 替换容器使用的镜像（核心命令：--force 强制替换）
+              docker container update --image ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest $CONTAINER_NAME
+              # 重启容器（保留原有配置：网络、卷、端口映射等）
+              docker start $CONTAINER_NAME
+              echo "容器 $CONTAINER_NAME 镜像已更新并重启"
+            else
+              # 容器不存在时，才用docker-compose创建（兼容首次部署）
+              docker-compose up -d
+              echo "容器不存在，已创建新容器并启动"
+            fi
+            
+            # 第四步：清理无用镜像（节省空间）
             docker system prune -f
-
-      # 6. 部署成功后推送飞书通知（仅成功时执行）
+       # 6. 部署成功后推送飞书通知（仅成功时执行）
       - name: Send Feishu Success Notification
         if: steps.deploy.outcome == 'success'  # 仅部署成功时触发
         env:
