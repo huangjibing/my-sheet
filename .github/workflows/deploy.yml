@@ -55,15 +55,15 @@ jobs:
               echo "自定义网络 $NETWORK_NAME 创建成功"
             fi
             
-            # 第四步：检查容器是否存在，存在则替换镜像并重启；不存在则用docker run创建
+            # 第四步：检查容器是否存在，存在则删除容器;
             if docker ps -a --format "{{.Names}}" | grep -q "$CONTAINER_NAME"; then
               # 容器存在：替换镜像并重启
               docker stop $CONTAINER_NAME
-              docker container update --image ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest $CONTAINER_NAME
-              docker start $CONTAINER_NAME
-              echo "容器 $CONTAINER_NAME 镜像已更新并重启"
-            else
-              # 容器不存在：用docker run创建（参数和原docker-compose.yml完全对齐）
+              docker rm $CONTAINER_NAME
+              echo "容器 $CONTAINER_NAME 已经删除"
+            fi
+            
+            # 第五步: 创建容器并设置镜像
               docker run -d \
                 --name $CONTAINER_NAME \
                 --restart always \
