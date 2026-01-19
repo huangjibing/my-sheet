@@ -74,9 +74,8 @@ jobs:
                 -e NUXT_PORT=3000 \
                 ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
               echo "容器 $CONTAINER_NAME 已通过docker run创建并启动"
-            fi
             
-            # 第五步：清理无用镜像（节省空间）
+            # 第六步：清理无用镜像（节省空间）
             docker system prune -f
 
       # 6. 打包+部署成功后推送飞书通知（仅成功时执行）

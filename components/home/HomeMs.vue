@@ -27,7 +27,7 @@
             <div class="homems-assure">
                 <div class="item bg-products">
                     <i class="icon iconfont icon-xuanzhong icon-color-products"></i>
-                    <span class="name">10,000+ Products</span>
+                    <span class="name">100,000+ Products</span>
                 </div>
 
                 <div class="item bg-photos">
