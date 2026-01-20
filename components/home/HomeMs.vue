@@ -50,28 +50,28 @@
 </template>
 <style lang="scss" scoped>
     .bg-products{
-        background-color: lab(98.1563 -5.60117 2.75915);
+        background-color: #F0FDF4;
     }
     .icon-color-products{
-        color: lab(70.5521 -66.5147 45.8073);
+        color: #00C753;
     }
     .bg-photos{
-        background-color: lab(96.492 -1.14644 -5.11479);
+        background-color: #EEF6FF;
     }
     .icon-color-photos{
-        color: lab(54.1736 13.3369 -74.6839);
+        color: #0083FF;
     }
     .bg-daily{
-        background-color: lab(97.1627 2.99937 -4.13398);
+        background-color: #F9F5FF;
     }
     .icon-color-daily{
-        color: lab(52.0183 66.11 -78.2316);
+        color: #9B4FFF;
     }
     .bg-use{
-        background-color: lab(97.7008 1.53735 5.90649);
+        background-color: #FFF7ED;
     }
     .icon-color-use{
-        color: lab(64.272 57.1788 90.3583);
+        color: #FF6800;
     }
     .homems-wrapper{
         display: flex;
@@ -85,13 +85,14 @@
             .title{
                 // font-size: 65px;
                 font-weight: 900;
-                background: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(49.5493 79.8381 2.31768) 50%, lab(43.0295 75.21 -86.5669) 100%);
+                background: linear-gradient(to right, rgb(255, 24, 107) 0%, #E80075 50%, #8328F9 100%);
                 -webkit-background-clip: text; /* 兼容 Safari/Chrome */
                 background-clip: text;
                 color: transparent; /* 隐藏原文字颜色，露出渐变 */
+                font-weight: 900;
             }
             .subtitle{
-                color: lab(27.1134% -.956401 -12.3224);
+                color: #334153;
                 font-weight: 800;
                 margin-top: 5px;
             }
@@ -131,7 +132,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border: 2px solid lab(91.6229 -0.159115 -2.26791);
+                    border: 2px solid #E5E7EB;
                     border-radius: 40px;
                     cursor: pointer;
                     &:hover{
@@ -153,7 +154,7 @@
                     border-radius: 20px;
                     padding: 0px 15px;
                     .name{
-                        color: lab(35.6337 -1.58697 -10.8425);
+                        color: #475565;
                         font-size: 14px;
                         font-weight: 600;
                     }

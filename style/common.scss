@@ -25,52 +25,52 @@
 }
 :root {
   // --primary: #89ac08;
-  --color-red-100: lab(92.243% 10.2865 3.83865);
+  --color-red-100: #FFE2E2;
   --primary: #FF0039;
-  --color-gray-200: lab(91.6229% -.159115 -2.26791);
-  --color-red-700: lab(40.4273% 67.2623 53.7441);
-  --color-gray-700: lab(27.1134% -.956401 -12.3224);
-  --color-gray-900: lab(8.11897% .811279 -12.254);
-  --color-gray-600: lab(35.6337 -1.58697 -10.8425);
-  --color-gray-500: lab(47.7841% -.393182 -10.0268);;
-  --color-green-500: lab(70.5521 -66.5147 45.8073);
-  --color-gray-50: lab(98.2596 -0.247031 -0.706708);
-  --text-xl: 1.25rem;
-  --color-gray-100: lab(96.1596% -.0823438 -1.13575);
+  --color-gray-200: #E5E7EB;
+  --color-red-700: #C40003;
+  --color-gray-700: #334153;
+  --color-gray-900: #0D1828;
+  --color-gray-600: #475565;
+  --color-gray-500: #687282;
+  --color-green-500: #00C753;
+  --color-gray-50: #F9FAFB;
+  --text-xl: 20px;
+  --color-gray-100: #F3F4F6;
 
-  --text-xs: .75rem;
+  --text-xs: 12px;
   --text-xs--line-height: calc(1 / .75);
-  --text-sm: .875rem;
+  --text-sm: 14px;
   --text-sm--line-height: calc(1.25 / .875);
-  --text-base: 1rem;
+  --text-base: 16px;
   --text-base--line-height: calc(1.5 / 1);
-  --text-lg: 1.125rem;
+  --text-lg: 18px;
   --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 1.25rem;
+  --text-xl: 20px;
   --text-xl--line-height: calc(1.75 / 1.25);
-  --text-2xl: 1.5rem;
+  --text-2xl: 24px;
   --text-2xl--line-height: calc(2 / 1.5);
-  --text-3xl: 1.875rem;
+  --text-3xl: 30px;
   --text-3xl--line-height: calc(2.25 / 1.875);
-  --text-4xl: 2.25rem;
+  --text-4xl: 36px;
   --text-4xl--line-height: calc(2.5 / 2.25);
-  --text-5xl: 3rem;
+  --text-5xl: 48px;
   --text-5xl--line-height: 1;
-  --text-6xl: 3.75rem;
+  --text-6xl: 60px;
   --text-6xl--line-height: 1;
-  --text-7xl: 4.5rem;
+  --text-7xl: 72px;
   --text-7xl--line-height: 1;
 
-  --container-md: 28rem;
-  --container-lg: 32rem;
-  --container-2xl: 42rem;
-  --container-3xl: 48rem;
-  --container-4xl: 56rem;
-  --container-5xl: 64rem;
-  --container-6xl: 72rem;
-  --container-7xl: 80rem;
+  --container-md: 448px;
+  --container-lg: 512px;
+  --container-2xl: 672px;
+  --container-3xl: 768px;
+  --container-4xl: 896px;
+  --container-5xl: 1024px;
+  --container-6xl: 1152px;
+  --container-7xl: 1280px;
 
-  --spacing: .25rem;
+  --spacing: 4px;
 }
 body {
   font-family: 'PingFang SC';
@@ -95,25 +95,25 @@ body {
 }
 
 .py-28{
-  padding-block: calc(var(--spacing) * 28);
+  padding-block: 112px;
 }
 .py-20{
-  padding-block: calc(var(--spacing) * 20);
+  padding-block: 80px;
 }
 .py-16{
-  padding-block: calc(var(--spacing) * 16);
+  padding-block: 64px;
 }
 .px-8{
-  padding-inline: calc(var(--spacing) * 8);
+  padding-inline: 32px;
 }
 .px-6{
-  padding-inline: calc(var(--spacing) * 6);
+  padding-inline: 24px;
 }
 .px-4{
-  padding-inline: calc(var(--spacing) * 4);
+  padding-inline: 16px;
 }
 .pt-8{
-  padding-top: calc(var(--spacing) * 8);
+  padding-top: 32px;
 }
 .mx-auto {
   margin-inline: auto;

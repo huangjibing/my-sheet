@@ -83,7 +83,7 @@ onUnmounted(() => {
             display: flex;
             gap: 10px;
             font-size: 14px;
-            color: lab(47.7841 -0.393182 -10.0268);
+            color: #687282;
             flex-wrap: wrap;
             .icon{
                 font-size: 12px;

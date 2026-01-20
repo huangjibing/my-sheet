@@ -17,6 +17,15 @@ const handleGoProductDetail = (id: number) => {
   // window?.fbq?.('track', 'ViewContent');
 };
 
+const openGoods = () => {
+  if (inviteCode.value) {
+    openLink(`${props.productInfo.vigorbuyUrl}?inviteCode=${inviteCode.value}&utm_source=vigorbuysheet`)
+  } else {
+    openLink(`${props.productInfo.vigorbuyUrl}?utm_source=vigorbuysheet`)
+  }
+  window?.fbq?.('track', 'ViewContent');
+}
+
 const priceArr = (price:string) => {
   return price.split('.');
 };
@@ -41,7 +50,7 @@ onMounted(() => {
         <div class="product-tag">
           <div class="qc" @click.stop="baseStore.setPreviewImgInfo(productInfo.qcImage)">
             <i class="icon iconfont icon-biaoqian font-11"></i>
-            <span>
+            <span class="tag wrap-line-1">
               {{ productInfo.typeName }}
             </span>
           </div>
@@ -74,8 +83,8 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- 300*300 占位图 -->
-    <div class="buy-btn">
+
+    <div class="buy-btn" @click.stop="openGoods">
       <span>Buy Now</span>
       <i class="icon iconfont icon-tiaozhuan font-13 ml-5"></i>
     </div>
@@ -116,6 +125,8 @@ onMounted(() => {
     position: relative;
     margin: auto;
     overflow: hidden;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
   }
   .product-img {
     position: absolute;
@@ -219,7 +230,7 @@ onMounted(() => {
   }
   .buy-btn{
     border-radius: 8px;
-    background: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(40.4273 67.2623 53.7441) 100%); /* 粉到红渐变 */
+    background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
     font-size: 14px;
     font-weight: 700;
     color: #fff;
@@ -237,7 +248,7 @@ onMounted(() => {
 @media screen and (max-width: 768px) {
   .product-item{
     .product-img-wrapper {
-      padding-bottom: 10rem;
+      padding-bottom: 160px;
     }
     .product-price{
       .price{
@@ -252,6 +263,11 @@ onMounted(() => {
         .decimal{
           font-size: 15px;
         }
+      }
+    }
+    .product-tag{
+      .tag{
+        max-width: 42px;
       }
     }
     .buy-btn{

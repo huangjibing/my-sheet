@@ -112,7 +112,7 @@ onMounted(() => {
             margin-left: 5px;
             font-size: 20px;
             font-weight: 900;
-            background: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(40.4273 67.2623 53.7441) 100%); /* 浅粉 → 深粉，可替换颜色 */
+            background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 浅粉 → 深粉，可替换颜色 */
       
             /* 让渐变仅显示在文字区域 */
             -webkit-background-clip: text; /* 兼容 Safari/Chrome */

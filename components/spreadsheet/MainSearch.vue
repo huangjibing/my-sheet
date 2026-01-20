@@ -111,7 +111,7 @@ const searchChange = debounce(searchChangeEmit, 500);
 </template>
 <style lang="scss" scoped>
 .search-input{
-  border: 1px solid lab(45.1042 61.2751 53.9774 / 0.2);
+  border: 1px solid #CD2A0D;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   padding: 24px;
   border-radius: 24px;

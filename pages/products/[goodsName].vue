@@ -214,19 +214,26 @@ const coverImg = computed(() => {
     margin-top: 22px;
     .detail-img-wrapper{
       .detail-img-cover{
-        border: 1px solid lab(91.6229 -0.159115 -2.26791);
+        border: 1px solid #E5E7EB;
         padding: 20px;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
         .img-box{
-          padding: 20px;
+          padding: 0px;
           border-radius: 10px;
           background-color: #F7F7F9;
-          aspect-ratio: 1 / 1;
+          padding-bottom: 100%;
+          position: relative; 
         }
         .product-img{
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
     }
@@ -234,7 +241,7 @@ const coverImg = computed(() => {
       display: flex;
       gap: 12px;
       .item{
-        border: 2px solid lab(91.6229 -0.159115 -2.26791);
+        border: 2px solid #E5E7EB;
         padding: 10px;
         width: 119px;
         height: 119px;
@@ -270,7 +277,7 @@ const coverImg = computed(() => {
       flex: 1;
       .info-basic-card{
         padding: 24px;
-        border: 1px solid lab(91.6229 -0.159115 -2.26791);
+        border: 1px solid #E5E7EB;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
       }
@@ -293,7 +300,7 @@ const coverImg = computed(() => {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(40.4273 67.2623 53.7441) 100%);
+        background-image: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%);
         color: #fff;
         border-radius: 12px;
         cursor: pointer;
@@ -306,7 +313,7 @@ const coverImg = computed(() => {
       .info-detail-card{
         margin-top: 20px;
         padding: 24px;
-        border: 1px solid lab(91.6229 -0.159115 -2.26791);
+        border: 1px solid #E5E7EB;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
         .item{

@@ -47,26 +47,26 @@ const changePage = (value:number) => {
     color: #c92910;
 }
 .disable{
-    background-image: linear-gradient(to right, lab(85.1236 -0.612259 -3.7138) 0%, lab(65.9269 -0.832707 -8.17473) 100%);
+    background-image: linear-gradient(to right, #D0D5DC 0%, #97A1AF 100%);
     cursor: not-allowed;
 }
 .unblock-previous{
-    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, lab(40.4273 67.2623 53.7441) 100%);
+    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
     cursor: pointer;
      &:hover{
         transform: scale(1.05);
-        background: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(40.4273 67.2623 53.7441) 100%); /* 粉到红渐变 */
+        background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
         .icon{
             transform: translateX(-3px)
         }
     }
 }
 .unblock-next{
-    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, lab(40.4273 67.2623 53.7441) 100%);
+    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
     cursor: pointer;
      &:hover{
         transform: scale(1.05);
-        background: linear-gradient(to right, rgb(255, 24, 107) 0%, lab(40.4273 67.2623 53.7441) 100%); /* 粉到红渐变 */
+        background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
         .icon{
             transform: translateX(3px)
         }
@@ -77,7 +77,7 @@ const changePage = (value:number) => {
     justify-content: space-between;
     padding: 30px;
     background-color: #fff;
-    border: 1px solid lab(91.6229 -0.159115 -2.26791);
+    border: 1px solid #E5E7EB;
     border-radius: 16px;
     align-items: center;
     .btn{
@@ -102,8 +102,8 @@ const changePage = (value:number) => {
             transition: transform 0.3s ease;
         }
         .page{
-            background-image: linear-gradient(to right, lab(93.3333 6.97437 -9.83434) 0%, lab(93.5864 9.01193 -3.15079) 100%);
-            border: 1px solid lab(45.1042 61.2751 53.9774 / 0.2);
+            background-image: linear-gradient(to right, #F1E8FF 0%, #FCE7F3 100%);
+            border: 1px solid #CD2A0D;
             padding: 0px 24px;
         }
         .next{

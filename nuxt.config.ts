@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: true,
+  ssr: false,
   devServer: {
     port: 3004,
     host: "0.0.0.0",
@@ -51,6 +51,11 @@ export default defineNuxtConfig({
         }
       ],
       meta: [
+        {
+          name: 'viewport',
+          // 核心：添加 minimum-scale/maximum-scale 锁定缩放
+          content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
+        },
         {
           name: "description",
           content:
