@@ -10,6 +10,15 @@ export default defineNuxtConfig({
     preset: 'node-server', // Node 部署模式必填
     output: {
       dir: '.output'
+    },
+    routeRules: {
+      // 为所有路由设置 X-Frame-Options 和 CSP 头
+      '/**': {
+        headers: {
+          'X-Frame-Options': 'DENY',
+          'Content-Security-Policy': "frame-ancestors 'none';", // 限制 iframe 嵌入
+        },
+      },
     }
   },
   app: {
