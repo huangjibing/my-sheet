@@ -96,23 +96,6 @@ export const useBaseStore = defineStore("base", () => {
     return list;
   };
 
-  /**
-   * 随机打乱数组顺序（Fisher-Yates 算法）
-   * @param {Array} arr - 要打乱的数组
-   * @returns {Array} 打乱后的新数组（不修改原数组）
-   */
-  function shuffleArray(arr:any) {
-    // 复制原数组，避免修改原数组
-    const newArr = [...arr];
-    for (let i = newArr.length - 1; i > 0; i--) {
-      // 生成 [0, i] 之间的随机索引
-      const j = Math.floor(Math.random() * (i + 1));
-      // 交换元素
-      [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-    }
-    return newArr;
-  }
-
   const fuseOptions = {
     keys: ['goodsTitle', 'abbr'], // 要搜索的字段
     threshold: 0.3, // 匹配阈值（0 严格，1 宽松）
@@ -184,19 +167,6 @@ export const useBaseStore = defineStore("base", () => {
     return list;
   };
 
-  /**
-   * 分类查询
-   * @param category 分类名称
-   * @returns 
-   */
-  const getProductCategory = (category: string) => {
-    const list = productAll.value.filter(
-      (item: Product) => item.tags.includes(category)
-    );
-
-    return shuffleArray(list);
-  }
-
 
   /**
    * 品牌商品查詢并排序
@@ -247,50 +217,7 @@ export const useBaseStore = defineStore("base", () => {
     return list;
   };
 
-  const getProducParentTypetListRandom = (typeName: string) => {
-    let list = productAll.value.filter(
-      (item: Product) => item.parentTypeName === typeName
-    );
-    return shuffleArray(list);
-  };
-
   const getSearchList = (searchKey: string) => {
-    // const keyArr = searchKey.toLowerCase().split(" ");
-    // const list =
-    //   productAll.value.filter((item: Product) => {
-    //     return keyArr.some(
-    //       (key: string) =>
-    //         key.trim() && item.goodsTitle.toLowerCase().includes(key.trim())
-    //     );
-    //   }) || [];
-    // list.sort((a: Product, b: Product) => {
-    //   const aCount = keyArr.reduce((pre: number, cur: string) => {
-    //     if (cur.trim() && a.goodsTitle.toLowerCase().includes(cur.trim())) {
-    //       pre++;
-    //     }
-    //     return pre;
-    //   }, 0);
-
-    //   const bCount = keyArr.reduce((pre: number, cur: string) => {
-    //     if (cur.trim() && b.goodsTitle.toLowerCase().includes(cur.trim())) {
-    //       pre++;
-    //     }
-    //     return pre;
-    //   }, 0);
-
-    //   return bCount - aCount;
-    // });
-
-    // let list = JSON.parse(JSON.stringify(productAll.value));
-    // for(let i in keyArr) {
-    //   list = list.filter((item: Product) => {
-    //     return item.goodsTitle.toLowerCase().includes(keyArr[i].trim())
-    //   })
-    // }
-    // list.sort((a:Product,b:Product) => {
-    //   return a.discountedPrice - b.discountedPrice;
-    // })
-    // return list;
     if (isAllDigits(searchKey.trim())) {
       const list = productAll.value.filter((item: Product) => {
         return item.offerId === searchKey
@@ -359,8 +286,6 @@ export const useBaseStore = defineStore("base", () => {
     getIdProductInfo,
     getProductSortList,
     getProductTypeSortList,
-    getProductCategory,
-    getProducParentTypetListRandom,
     getProductBrandSortList,
     discountList,
 
