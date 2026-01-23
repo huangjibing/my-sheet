@@ -49,7 +49,7 @@ export const useBaseStore = defineStore("base", () => {
       "Hot selling",
       "Shoes",
       "Suit",
-      "Women clothes",
+      "Women Clothing",
       "Hoodie",
       "Sweatshirt",
       "Sweater",

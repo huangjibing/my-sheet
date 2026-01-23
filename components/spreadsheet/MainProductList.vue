@@ -72,7 +72,16 @@ const addUrlParam = () => {
                 />
             </div>
 
-            <SpreadsheetMainPagination @changePage="changePage" :page="page" :size="pageSize" :total="productList.length" class="mt-20" />
+            <div v-else class="text-center py-16">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
+                    <i class="icon iconfont icon-sousuo font-18 bold-600"></i>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+                <p class="text-gray-600 text-sm">Try different search terms or browse all categories</p>
+            </div>
+
+            <SpreadsheetMainPagination v-if="productCurList.length" @changePage="changePage" :page="page" :size="pageSize" :total="productList.length" class="mt-20" />
         </div>
     </div>
 </template>

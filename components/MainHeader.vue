@@ -98,7 +98,12 @@ onMounted(() => {
 }
 .mainheader{
     height: 64px;
-    background-color: #fff;
+    // background-color: #fff;
+    /* 核心毛玻璃属性 */
+    background: rgba(255, 255, 255, 0.7); /* 白色半透明，可改 rgba(0,0,0,0.2) 深色玻璃 */
+    backdrop-filter: blur(40px); /* 模糊半径，数值越大越模糊（推荐8-15px） */
+    -webkit-backdrop-filter: blur(40px); /* 兼容 Safari */
+
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5); /* 阴影增强 */
     display: flex;
     justify-content: center;
