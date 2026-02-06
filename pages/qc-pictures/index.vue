@@ -52,7 +52,7 @@
         <div class="bg-white">
             <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div class="text-center py-20">
-                    <div class="w-24 h-24 mx-auto mb-8 rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center shadow-inner">
+                    <div class="w-24 h-24 mx-auto mb-8 rounded-3xl bg-gray-100 flex items-center justify-center shadow-inner">
                         <i class="icon iconfont icon-zanwutupian text-slate-400" style="font-size: 46px;"></i>
                     </div>
 

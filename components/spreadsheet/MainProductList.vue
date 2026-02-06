@@ -6,7 +6,7 @@ const category = ref(route.query.category?.toString() || 'All Categories');
 const currency = ref(route.query.currency?.toString() || 'USD');
 const search = ref(route.query.search?.toString() || '');
 const page = ref(Math.max(Number(route.query.page) || 1, 1));
-const pageSize = ref(80);
+const pageSize = ref(20);
 const productList = computed(() => {
     return baseStore.getSearchProductList(search.value, category.value != 'All Categories' ? category.value : '');
 });
