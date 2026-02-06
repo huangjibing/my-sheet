@@ -4,8 +4,8 @@
 <template>
     <div class="homems-wrapper px-4 sm:!px-6 lg:!px-8 py-16 sm:!py-20 lg:!py-28">
         <div class="homems-content max-w-7xl">
-            <span class="title text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl">Vigorbuy Sheet</span>
-            <span class="subtitle text-2xl sm:!text-3xl md:!text-4xl">The Complete Vigorbuy Spreadsheet</span>
+            <span class="title text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl mb-2">Vigorbuy Sheet</span>
+            <span class="subtitle text-2xl sm:!text-3xl md:!text-4xl mb-2">The Complete Vigorbuy Spreadsheet</span>
 
             <div class="describe max-w-3xl mx-auto">
                 <p class="mt-30 text-gray-700 text-lg sm:!text-xl">Find verified products from Taobao, 1688, and Weidian in one searchable database. Built for buyers who want to skip the guesswork and shop with confidence.</p>

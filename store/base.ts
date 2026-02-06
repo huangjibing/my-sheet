@@ -9,40 +9,6 @@ export const useBaseStore = defineStore("base", () => {
   const productAll = computed<Product[]>(() => {
     return products;
   });
-  const classifyList = computed<string[]>(() => {
-    // const set: Set<string> = new Set();
-    // products.forEach((item: Product) => {
-    //   set.add(item.typeName);
-    // });
-    // return Array.from(set);
-    return [
-      "Hot seller",
-      "Shoes",
-      "Slippers",
-      "Suit",
-      "Sweatshirt",
-      "Hoodie",
-      "Sweater",
-      "T-shirt",
-      "Polo shirt",
-      "Shorts",
-      "Jacket",
-      "Pants",
-      "Underwear",
-      "Down Jacket",
-      "Belt",
-      "Jersey",
-      "Hat",
-      "Wallet",
-      "Sunglasses",
-      "Accessories",
-      "Scarf",
-      "Bag",
-      "Electronics",
-      "Socks",
-      "Perfume",
-    ];
-  });
   const classifyDiscountList = computed<string[]>(() => {
     return [
       "All Categories",
@@ -276,7 +242,6 @@ export const useBaseStore = defineStore("base", () => {
   };
 
   return {
-    classifyList,
     getSearchProductList,
     getProductList,
     getProducParentTypetList,

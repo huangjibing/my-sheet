@@ -37,40 +37,6 @@
   --color-gray-50: #F9FAFB;
   --text-xl: 20px;
   --color-gray-100: #F3F4F6;
-
-  --text-xs: 12px;
-  --text-xs--line-height: calc(1 / .75);
-  --text-sm: 14px;
-  --text-sm--line-height: calc(1.25 / .875);
-  --text-base: 16px;
-  --text-base--line-height: calc(1.5 / 1);
-  --text-lg: 18px;
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl: 20px;
-  --text-xl--line-height: calc(1.75 / 1.25);
-  --text-2xl: 24px;
-  --text-2xl--line-height: calc(2 / 1.5);
-  --text-3xl: 30px;
-  --text-3xl--line-height: calc(2.25 / 1.875);
-  --text-4xl: 36px;
-  --text-4xl--line-height: calc(2.5 / 2.25);
-  --text-5xl: 48px;
-  --text-5xl--line-height: 1;
-  --text-6xl: 60px;
-  --text-6xl--line-height: 1;
-  --text-7xl: 72px;
-  --text-7xl--line-height: 1;
-
-  --container-md: 448px;
-  --container-lg: 512px;
-  --container-2xl: 672px;
-  --container-3xl: 768px;
-  --container-4xl: 896px;
-  --container-5xl: 1024px;
-  --container-6xl: 1152px;
-  --container-7xl: 1280px;
-
-  --spacing: 4px;
 }
 body {
   font-family: 'PingFang SC';
@@ -79,129 +45,12 @@ body {
   display: block;
 }
 
-.grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.gap-8 {
-    gap: calc(var(--spacing) * 8);
-}
 .grid {
     display: grid;
 }
 
-.grid {
-    display: grid;
-}
-
-.py-28{
-  padding-block: 112px;
-}
-.py-20{
-  padding-block: 80px;
-}
-.py-16{
-  padding-block: 64px;
-}
-.px-8{
-  padding-inline: 32px;
-}
-.px-6{
-  padding-inline: 24px;
-}
-.px-4{
-  padding-inline: 16px;
-}
-.pt-8{
-  padding-top: 32px;
-}
-.mx-auto {
-  margin-inline: auto;
-}
-.max-w-lg{
-  max-width: var(--container-lg);
-}
-.max-w-md{
-  max-width: var(--container-md);
-}
-.max-w-3xl{
-  max-width: var(--container-3xl);
-}
-.max-w-7xl{
-  max-width: var(--container-7xl);
-}
-
-.border-gray-100 {
-  border-color: var(--color-gray-100);
-}
-
-.border-t {
-  border-top-style: solid;
-  border-top-width: 1px;
-}
-
-.border-b {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-
-.text-xl{
-  font-size: var(--text-xl);
-}
-.text-red-100{
-  color: var(--color-red-100);
-}
-.text-gray-900{
-  color: var(--color-gray-900);
-}
-.text-gray-700{
-  color: var(--color-gray-700);
-}
-.text-gray-600{
-  color: var(--color-gray-600);
-}
-.text-gray-500{
-  color: var(--color-gray-500);
-}
-.text-green-500{
-  color: var(--color-green-500);
-}
-.bg-gray-50{
-  background-color: var(--color-gray-50);
-}
-
-.text-xs{
-  font-size: var(--text-xs);
-}
-.text-sm{
-  font-size: var(--text-sm);
-}
-.text-base{
-  font-size: var(--text-base);
-}
-.text-lg{
-  font-size: var(--text-lg);
-}
-.text-xl{
-  font-size: var(--text-xl);
-}
-.text-2xl{
-  font-size: var(--text-2xl);
-}
-.text-3xl{
-  font-size: var(--text-3xl);
-}
-.text-4xl{
-  font-size: var(--text-4xl);
-}
-.text-5xl{
-  font-size: var(--text-5xl);
-}
-.text-6xl{
-  font-size: var(--text-6xl);
-}
-.text-7xl{
-  font-size: var(--text-7xl);
+.text-center{
+  text-align: center;
 }
 
 .font-11{
@@ -241,43 +90,6 @@ body {
 .bold-700 {
   font-weight: 700;
 }
-.mt-3{
-  margin-top: 3px;
-}
-.mt-5{
-  margin-top: 5px;
-}
-.mt-8 {
-  margin-top: 8px;
-}
-.mt-12 {
-  margin-top: 12px;
-}
-.mt-16 {
-  margin-top: 16px;
-}
-.mt-20 {
-  margin-top: 20px;
-}
-.mt-24 {
-  margin-top: 24px;
-}
-.mt-32 {
-  margin-top: 32px;
-}
-.mt-48 {
-  margin-top: 48px;
-}
-.mt-60 {
-  margin-top: 60px;
-}
-
-.pt-12{
-  padding-top: 12px;
-}
-.pt-16{
-  padding-top: 16px;
-}
 
 .text-18 {
   font-size: 18px;
@@ -286,10 +98,10 @@ body {
   font-size: 20px;
 }
 
-.flex{
-  display: flex;
-  align-items: center;
-}
+// .flex{
+//   display: flex;
+//   align-items: center;
+// }
 .items-center{
   align-items: center;
 }
@@ -334,6 +146,12 @@ body {
 .gap-12{
   gap: 12px;
 }
+.gap-2{
+  gap: 8px;
+}
+.gap-1{
+  gap: 4px;
+}
 .space-around{
   justify-content: space-around;
 }
@@ -351,27 +169,6 @@ body {
 }
 .mr-5{
   margin-right: 5px;
-}
-.mt-5{
-  margin-top: 5px;
-}
-.mt-10{
-  margin-top: 10px;
-}
-.mt-30{
-  margin-top: 30px;
-}
-.mb-7{
-  margin-bottom: 7px;
-}
-.mb-10{
-  margin-bottom: 10px;
-}
-.mb-15{
-  margin-bottom: 15px;
-}
-.mb-20{
-  margin-bottom: 20px;
 }
 .pointer{
   cursor: pointer;

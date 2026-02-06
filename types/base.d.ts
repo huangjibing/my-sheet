@@ -29,3 +29,11 @@ export interface FloatingPosition {
   isRight?: boolean;
 }
 
+export interface GirdsItem {
+  page: string;
+  image: string;
+  tag: string;
+  time: string;
+  title: string;
+  content: string;
+}

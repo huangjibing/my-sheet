@@ -59,7 +59,7 @@ const coverImg = computed(() => {
     <template v-if="productInfo">
       <div>
         <div class="detail-head">
-          <div class="font-13">
+          <div class="font-13 mb-4">
             <span class="home text-gray-500" @click="jumpPath('/')">
                 <i class="icon iconfont icon-shouye"></i>
                 <span class="ml-3">Home</span>
@@ -81,14 +81,13 @@ const coverImg = computed(() => {
             </span>
           </div>
 
-          <div class="mt-8 to-page text-gray-600" @click="toPage">
+          <div class="to-page text-gray-600" @click="toPage">
             <i class="icon iconfont icon-zuojiantou font-14"></i>
             <span class="ml-8 font-15">Back to Products</span>
           </div>
         </div>
 
-        <div class="detail-content grid lg:grid-cols-2 gap-8 mt-6">
-
+        <div class="detail-content grid lg:grid-cols-2 gap-8 mt-6 mb-4">
           <div class="detail-img-wrapper">
             <div class="detail-img-cover">
               <div class="img-box">
@@ -117,7 +116,7 @@ const coverImg = computed(() => {
 
           <div class="detail-info-wrapper">
             <div class="info-basic-card">
-              <div class="flex gap-12">
+              <div class="flex gap-12 mb-4">
                 <div style="height: 30px; display: flex; align-items: center; padding: 0px 15px; border-radius: 15px;background-color: #FEE7F0;color: #ff186b;">
                   <i class="icon iconfont icon-biaoqian font-12 bold-600"></i>
                   <span class="ml-3 font-14">{{ productInfo.typeName }}</span>
@@ -129,13 +128,13 @@ const coverImg = computed(() => {
                 </div>
               </div>
 
-              <h1 class="mt-16">{{ productInfo.goodsTitle }}</h1>
+              <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">{{ productInfo.goodsTitle }}</h1>
 
-              <div class="mt-16">
+              <p class="text-slate-400 leading-relaxed">
                 No description available for this product.
-              </div>
+              </p>
 
-              <div class="mt-16 pt-16 border-t border-gray-100 flex">
+              <div class="mt-4 pt-8 border-t border-gray-100 flex">
 
                 <div style="width: 32px;height: 32px;border-radius: 50%;background-color: #FEE7F0;color: #ff186b;display: flex;align-items: center;justify-content: center;">
                   <i class="icon iconfont icon-fangxunrenyuan font-14"></i>

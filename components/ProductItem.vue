@@ -64,8 +64,8 @@ onMounted(() => {
       <div class="product-info">
         <div class="info-text">
           <h3 class="text-gray-900 wrap-line-2">{{ productInfo.goodsTitle }}</h3>
-          <p class="text-gray-600 font-13 mt-8">No description available</p>
-          <p class="text-gray-600 font-13 mt-8">
+          <p class="text-gray-600 font-13 mt-3">No description available</p>
+          <p class="text-gray-600 font-13 mt-3">
             <i class="icon iconfont icon-fangxunrenyuan"></i>
             <span class="ml-3">manyouyisi</span>
           </p>

@@ -34,20 +34,25 @@ onMounted(() => {
                         <i class="icon iconfont icon-biaoge"></i>
                         <span class="name">Spreadsheet</span>
                     </div>
-
-                    <div class="item">
+                    
+                    <div class="item"
+                    @click="jumpPage('/qc-pictures')"
+                    :class="{ 'select-page': $route.name === 'qc-pictures' }">
                         <i class="icon iconfont icon-xiangji_o"></i>
                         <span class="name">QC Pictures</span>
                     </div>
 
-                    <div class="item">
+                    <div class="item"
+                    @click="jumpPage('/blog')"
+                    :class="{ 'select-page': $route.name === 'blog' }">
                         <i class="icon iconfont icon-shu"></i>
                         <span class="name">Guides</span>
                     </div>
                 </div>
 
                 <div class="coupons-btn">
-                    Get Vigorbuy Coupons
+                    <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5"></i>
+                    <span>Get Vigorbuy Coupons</span>
                 </div>
 
                 <div class="main-menu" @click="isShowMenu = !isShowMenu">
@@ -73,12 +78,16 @@ onMounted(() => {
                         <span class="name">Spreadsheet</span>
                     </div>
 
-                    <div class="item">
+                    <div class="item"
+                    @click="jumpPage('/qc-pictures')"
+                    :class="{ 'select-page': $route.name === 'qc-pictures' }">
                         <i class="icon iconfont icon-xiangji_o"></i>
                         <span class="name">QC Pictures</span>
                     </div>
 
-                    <div class="item">
+                    <div class="item"
+                    @click="jumpPage('/blog')"
+                    :class="{ 'select-page': $route.name === 'blog' }">
                         <i class="icon iconfont icon-shu"></i>
                         <span class="name">Guides</span>
                     </div>
@@ -167,8 +176,16 @@ onMounted(() => {
         text-align: center;
         background-color: #ff186b;
         border-radius: 8px;
-        padding: 0px 20px;
+        height: 40px;
+        width: 207px;
+        display: flex;
+        justify-content: center;
         cursor: pointer;
+        font-size: 14px;
+        .icon{
+            font-size: 11px;
+            margin-right: 5px;
+        }
     }
     .main-menu{
         display: none;
@@ -181,7 +198,7 @@ onMounted(() => {
 }
 @media screen and (max-width: 768px) {
     .coupons-btn{
-        display: none;
+        display: none !important;
     }
     .main-menu-liet{
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);

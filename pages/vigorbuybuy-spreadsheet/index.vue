@@ -32,7 +32,7 @@ onUnmounted(() => {
 <template>
     <div class="spreadsheet-wrapper">
         <div class="header max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 py-8">
-            <div class="mb-7 font-14">
+            <div class="mb-4 font-14">
                 <span class="home text-gray-500" @click="jumpPath('/')">
                     <i class="icon iconfont icon-shouye"></i>
                     <span class="ml-3">Home</span>
@@ -41,15 +41,15 @@ onUnmounted(() => {
                 <span class="ml-5">Vigorbuy Spreadsheet</span>
             </div>
 
-            <div class="mb-10">
+            <div class="text-3xl sm:text-4xl font-bold mb-3">
                 <h1>Vigorbuy Spreadsheet</h1>
             </div>
 
-            <p class="text-gray-600 mb-15">
+            <p class="text-lg text-slate-400 max-w-3xl">
                 Browse 8,407+ verified products from Taobao, 1688, and Weidian. Links verified weekly, updated daily.
             </p>
             
-            <div class="header-flooter">
+            <div class="header-flooter mt-6">
                 <div>
                     <i class="icon iconfont icon-weisa text-green-500"></i>
                     <span class="ml-8">Weekly link verification</span>
