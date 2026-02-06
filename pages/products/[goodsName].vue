@@ -147,7 +147,7 @@ const coverImg = computed(() => {
               </div>
             </div>
 
-            <div class="info-price-card">
+            <div class="info-price-card bg-gradient-to-r from-pink-300 to-pink-100">
               <h3 class="text-gray-700">PRICING</h3>
 
               <div class="price-item">
@@ -282,7 +282,6 @@ const coverImg = computed(() => {
       }
       .info-price-card{
         padding: 24px;
-        background-image: linear-gradient(to right bottom, lab(55.8824 81.016 18.8158 / 0.05) 0%, lab(97.1627 2.99937 -4.13398) 50%, lab(96.4459 4.53997 -1.49434) 100%);
         border-radius: 16px;
         margin-top: 20px;
         .price-item{

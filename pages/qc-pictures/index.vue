@@ -1,7 +1,8 @@
 <script setup lang="ts">
+// bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white
 </script>
 <template>
-    <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+    <div class="bg-gray-900 text-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm mb-6">
