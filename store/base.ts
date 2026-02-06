@@ -2,8 +2,6 @@ import { defineStore } from "pinia";
 import products from "@/assets/json/products1.json";
 import type { Product } from "@/types/base";
 import Fuse from 'fuse.js';
-import { pinyin }from 'pinyin-pro';
-import type { TabItem } from "@/types/base";
 
 export const useBaseStore = defineStore("base", () => {
   const productAll = computed<Product[]>(() => {
@@ -29,31 +27,6 @@ export const useBaseStore = defineStore("base", () => {
       "Samll items"
     ]
   });
-
-  const discountList = computed<TabItem[]>(() => {
-    return [
-      // {
-      //   label: '30% Off',
-      //   key: 'Popular: 30% Off'
-      // },
-      // {
-      //   label: '50% Off',
-      //   key: 'Surprise: From 50% Off'
-      // },
-      {
-        label: '15% Off',
-        key: 'Storewide: 15% Off'
-      },
-      {
-        label: '5% Off',
-        key: 'Premium Products: 5% Off'
-      },
-      // {
-      //   label: '80% Off',
-      //   key: 'Insane Deals: 80% Off'
-      // }
-    ]
-  })
 
   const getProductSortList = () => {
     let list = productAll.value.sort((a,b) => {
@@ -133,88 +106,6 @@ export const useBaseStore = defineStore("base", () => {
     return list;
   };
 
-
-  /**
-   * 品牌商品查詢并排序
-   * @param brandName 
-   * @returns 
-   */
-  const getProductBrandSortList = (brandName: string, category?:string) => {
-    let list = productAll.value.filter(
-      (item: Product) => item.brand === brandName
-    );
-
-    if (category && category !== '') {
-      list = list.filter(
-        (item: Product) => item.tags.includes(category)
-      );
-    }
-
-    list.sort((a,b) => {
-      return a.discountedPrice - b.discountedPrice
-    })
-    return list;
-  }
-
-  const getProductTypeSortList = (typeName: string, category?:string) => {
-    let list = productAll.value.filter(
-      (item: Product) => item.typeName === typeName
-    );
-
-    if (category && category !== '') {
-      list = list.filter(
-        (item: Product) => item.tags.includes(category)
-      );
-    }
-
-    list.sort((a,b) => {
-      return a.discountedPrice - b.discountedPrice
-    })
-    return list;
-  };
-
-  const getProducParentTypetList = (typeName: string) => {
-    let list = productAll.value.filter(
-      (item: Product) => item.parentTypeName === typeName
-    );
-    list.sort((a,b) => {
-      return a.discountedPrice - b.discountedPrice
-    })
-    return list;
-  };
-
-  const getSearchList = (searchKey: string) => {
-    if (isAllDigits(searchKey.trim())) {
-      const list = productAll.value.filter((item: Product) => {
-        return item.offerId === searchKey
-      })
-      return list;
-    } else {
-      // 创建 Fuse 实例
-      const fuseInstance = new Fuse(itemsWithPinyin, fuseOptions);
-      const fuseResults = fuseInstance.search(searchKey);
-      return fuseResults.map(r => r.item);
-    }
-  };
-
-  const getProductInfo = (goodsTitle: string) => {
-    console.log(
-      productAll.value[0].goodsTitle
-        .replaceAll(" ", "-")
-        .replace(/[#()&]/g, "") === goodsTitle,
-      productAll.value[0].goodsTitle
-        .replaceAll(" ", "-")
-        .replace(/[#()&\n]/g, ""),
-      goodsTitle
-    );
-    return productAll.value.find((item: Product) => {
-      return (
-        item.goodsTitle.replaceAll(" ", "-").replace(/[#()&]/g, "") ===
-        goodsTitle
-      );
-    });
-  };
-
   const getIdProductInfo = (id: number) => {
     return productAll.value.find((item: Product) => {
       return (
@@ -244,15 +135,9 @@ export const useBaseStore = defineStore("base", () => {
   return {
     getSearchProductList,
     getProductList,
-    getProducParentTypetList,
-    getSearchList,
-    getProductInfo,
     classifyDiscountList,
     getIdProductInfo,
     getProductSortList,
-    getProductTypeSortList,
-    getProductBrandSortList,
-    discountList,
 
     previewImgsList,
     curImgIndex,
