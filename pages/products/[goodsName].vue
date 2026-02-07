@@ -50,7 +50,8 @@ onMounted(() => {
     productInfo.value = data;
     coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
   }).catch(err => {
-
+    productInfo.value = baseStore.getIdProductInfo(parseInt(goodsName));
+    coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
   }).finally(() => {
     loading.value = false;
   })
