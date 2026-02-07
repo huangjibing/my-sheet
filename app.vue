@@ -1,15 +1,30 @@
 <script setup lang="ts">
+  import { useUserStore } from "@/store/user";
   import { useBaseStore } from "@/store/base";
   const baseStore = useBaseStore();
   const loading = ref(true);
+  const page = ref(1);
+  const maxPage = ref(21);
   const initData = async () => {
     console.info(new Date(), '开始加载')
-    const res = await import(`@/assets/json/products1.json`);
+    const res = await import(`@/assets/json/sliced-json/products_${page.value}.json`);
     const sliceData = res.default;
+    console.info(new Date(), '加载完成', sliceData)
     baseStore.setProductAll(sliceData);
     loading.value = false;
-    console.info(new Date(), '加载完成', sliceData)
+    page.value += 1;
+    if (page.value > maxPage.value) {
+      console.info('所有json数据加载完成');
+      return;
+    }
+    setTimeout(() => {
+      initData();
+    }, 1500)
   }
+
+  
+
+
   // const mediaQueryList = ref<MediaQueryList>();
   // const userStore = useUserStore();
   // const listener = (mql: MediaQueryListEvent) => {
@@ -47,8 +62,8 @@
     element-loading-text="Loading..."
     element-loading-svg-view-box="-10, -10, 50, 50"
     element-loading-background="rgba(122, 122, 122, 0.8)">
-     <NuxtLayout name="desktop">
-        <NuxtPage />
+    <NuxtLayout name="desktop">
+      <NuxtPage/>
     </NuxtLayout>
   </div>
 </template>

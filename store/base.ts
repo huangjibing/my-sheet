@@ -9,7 +9,7 @@ export const useBaseStore = defineStore("base", () => {
   // });
   const productAll = ref<Product[]>([]);
   const setProductAll = (list:any) => {
-    productAll.value = list;
+    productAll.value = productAll.value.concat(list);
   }
   const classifyDiscountList = computed<string[]>(() => {
     return [
