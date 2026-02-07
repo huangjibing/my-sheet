@@ -1,71 +1,54 @@
 <script setup lang="ts">
-  import { useUserStore } from "@/store/user";
   import { useBaseStore } from "@/store/base";
+  const version = ref('0.0.0.1');
   const baseStore = useBaseStore();
   const loading = ref(true);
   const page = ref(1);
   const maxPage = ref(21);
   const initData = async () => {
-    console.info(new Date(), '开始加载')
-    const res = await import(`@/assets/json/sliced-json/products_${page.value}.json`);
-    const sliceData = res.default;
-    console.info(new Date(), '加载完成', sliceData)
-    baseStore.setProductAll(sliceData);
-    loading.value = false;
-    page.value += 1;
-    if (page.value > maxPage.value) {
-      console.info('所有json数据加载完成');
-      return;
+    let versionStor = localStorage.getItem('version');
+    if ((versionStor && versionStor != version.value) || !versionStor) {
+      await clearStoreData("productDB", "products")
     }
-    setTimeout(() => {
-      initData();
-    }, 1500)
+    const result = await queryDataFromDB("productDB", "products");
+    if (result && result.length > 0) {
+      baseStore.setProductAll(result);
+      setTimeout(() => {
+        loading.value = false;
+      }, 500)
+      localStorage.setItem('version', version.value);
+      return;
+    } else {
+      console.info(new Date(), '开始加载')
+      const res = await import(`@/assets/json/sliced-json/products_${page.value}.json`);
+      const sliceData = res.default;
+      console.info(new Date(), '加载完成', sliceData)
+      baseStore.setProductAll(sliceData);
+      loading.value = false;
+      page.value += 1;
+      if (page.value > maxPage.value) {
+        console.info('所有json数据加载完成');
+        const list = baseStore.getProductAll();
+        initDBAndWriteData("productDB", "products", list)
+        localStorage.setItem('version', version.value);
+        return;
+      }
+      setTimeout(() => {
+        initData();
+      }, 1500) 
+    }
   }
 
-  
-
-
-  // const mediaQueryList = ref<MediaQueryList>();
-  // const userStore = useUserStore();
-  // const listener = (mql: MediaQueryListEvent) => {
-  //   userStore.setIsMobile(mql.matches);
-  // };
-
-  // const removeListenerOfResize = () => {
-  //   mediaQueryList.value?.removeEventListener('change', listener);
-  // };
-  // const addListenerOfResize = () => {
-  //   mediaQueryList.value = window.matchMedia('(max-width: 768px)');
-  //   userStore.setIsMobile(mediaQueryList.value.matches);
-  //   mediaQueryList.value?.addEventListener('change', listener);
-  // }
-  // const resizeListener = () => {
-  //   const doc = document.documentElement;
-  //   doc.style.setProperty('--browser-height', `${window.innerHeight}px`);
-  // };
-
-  onBeforeMount(() => {
-    // addListenerOfResize();
-    // resizeListener();
-    // window.addEventListener('resize', resizeListenerlab()
-  })
-  onMounted(() => {
-    initData()
+  onMounted(async () => {
+    await initData();
   })
   onUnmounted(() => {
-    // removeListenerOfResize();
-    // window.removeEventListener('resize', resizeListener);
   })
 </script>
 <template>
-  <div v-loading="loading"
-    element-loading-text="Loading..."
-    element-loading-svg-view-box="-10, -10, 50, 50"
-    element-loading-background="rgba(122, 122, 122, 0.8)">
-    <NuxtLayout name="desktop">
-      <NuxtPage/>
-    </NuxtLayout>
-  </div>
+  <NuxtLayout name="desktop">
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 <style lang="scss" scoped>
 

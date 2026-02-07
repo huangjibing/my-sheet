@@ -260,7 +260,7 @@ const info = {
                                 'Read reviews from buyers with your location',
                                 "Use Taobao's 'Brand Store' filter",
                                 'Check for official brand stores',
-                                "Use CNFans's quality inspection"
+                                "Use Vigorbuy's quality inspection"
                             ]
                         }
                     ]
@@ -283,7 +283,7 @@ const info = {
                                 'Order samples before bulk purchases',
                                 'Request factory certifications',
                                 "Ask for authentication reports",
-                                "Use CNFans's inspection service",
+                                "Use Vigorbuy's inspection service",
                                 'Video chat with factory if possible'
                             ]
                         }
@@ -308,7 +308,7 @@ const info = {
                                 'Trust established sellers only',
                                 "Read reviews extremely carefully",
                                 "Start with small orders",
-                                "Use CNFans's quality control"
+                                "Use Vigorbuy's quality control"
                             ]
                         }
                     ]
@@ -316,7 +316,7 @@ const info = {
             ]
         },
         {
-            title: 'How CNFans Protects You',
+            title: 'How Vigorbuy Protects You',
             ulList: [
                 {
                     title: 'Quality Inspection Service',
@@ -365,7 +365,7 @@ const info = {
                         {
                             title: 'If You Receive a Fake:',
                             list: [
-                                'Report immediately to CNFans',
+                                'Report immediately to Vigorbuy',
                                 'Provide evidence (photos, videos)',
                                 'We negotiate with seller',
                                 'Facilitate return or refund',
@@ -403,7 +403,7 @@ const info = {
                             list: [
                                 'Check serial numbers when possible',
                                 'Compare specifications carefully',
-                                'Test functionality with CNFans',
+                                'Test functionality with Vigorbuy',
                                 'Buy from specialized electronics sellers'
                             ]
                         }
@@ -524,7 +524,7 @@ const info = {
                             ]
                         },
                         {
-                            title: "CNFans's Policy:",
+                            title: "Vigorbuy's Policy:",
                             list: [
                                 "We don't knowingly ship counterfeits",
                                 "We'll refuse to purchase obvious fakes",
@@ -570,7 +570,7 @@ const info = {
                 },
                 {
                     title: '"Learned the Hard Way, Now Shop Smart"',
-                    subtitle: `om, UK: "I tried buying 'authentic' AirPods for $20. Obviously fake. Now I use CNFans's quality inspection and stick to Chinese brands like Xiaomi. Better products, honest pricing, no legal worries."`
+                    subtitle: `om, UK: "I tried buying 'authentic' AirPods for $20. Obviously fake. Now I use Vigorbuy's quality inspection and stick to Chinese brands like Xiaomi. Better products, honest pricing, no legal worries."`
                 },
                 {
                     title: '"Quality Over Labels"',
@@ -587,7 +587,7 @@ const info = {
                 },
                 {
                     title: 'When Ordering',
-                    subtitle: `✅ Use CNFans's quality inspection ✅ Request detailed photos ✅ Choose sellers with good ratings ✅ Communicate clearly about expectations ✅ Document everything ✅ Know your rights`
+                    subtitle: `✅ Use Vigorbuy's quality inspection ✅ Request detailed photos ✅ Choose sellers with good ratings ✅ Communicate clearly about expectations ✅ Document everything ✅ Know your rights`
                 },
                 {
                     title: 'After Receiving',
@@ -600,7 +600,7 @@ const info = {
             headList: [
                 {
                     title: '',
-                    subtitle: `Shopping from China doesn't mean risking counterfeits. With careful seller selection, thorough product research, and CNFans's protection services, you can shop confidently and safely.`
+                    subtitle: `Shopping from China doesn't mean risking counterfeits. With careful seller selection, thorough product research, and Vigorbuy's protection services, you can shop confidently and safely.`
                 }
             ],
             ulList: [
@@ -612,7 +612,7 @@ const info = {
                             list: [
                                 'If it seems too good to be true, it is',
                                 'Focus on quality and design, not fake logos',
-                                "Use protection services like CNFans",
+                                "Use protection services like Vigorbuy",
                                 'Choose reputable sellers',
                                 "Know your country's import laws"
                             ]
@@ -631,9 +631,9 @@ const info = {
             <div class="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
             <div class="relative h-full max-w-4xl mx-auto px-4 sm:!px-6 lg:!px-8 flex flex-col justify-end pb-12">
                 <div class="flex items-center gap-2 text-slate-400 text-sm mb-4">
-                    <a href="/">Home</a>
+                    <span class="pointer" @click="jumpPath('/')">Home</span>
                     <span>/</span>
-                    <a href="/blog">Blog</a>
+                    <span class="pointer" @click="jumpPath('/blog')">Blog</span>
                     <span>/</span>
                     <span class="text-white">Safety & Tips</span>
                 </div>
@@ -714,7 +714,7 @@ const info = {
             <hr>
             <p class="text-slate-300 leading-relaxed mb-4">
                 <em>
-                    Ready to shop safely from China? Sign up for CNFans today and benefit from our quality inspection and buyer protection services!
+                    Ready to shop safely from China? Sign up for Vigorbuy today and benefit from our quality inspection and buyer protection services!
                 </em>
             </p>
 

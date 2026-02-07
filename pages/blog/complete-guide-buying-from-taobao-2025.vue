@@ -8,9 +8,9 @@ import Grids4 from '@/assets/blog/grids-4.webp'
             <div class="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
             <div class="relative h-full max-w-4xl mx-auto px-4 sm:!px-6 lg:!px-8 flex flex-col justify-end pb-12">
                 <div class="flex items-center gap-2 text-slate-400 text-sm mb-4">
-                    <a href="/">Home</a>
+                    <span class="pointer" @click="jumpPath('/')">Home</span>
                     <span>/</span>
-                    <a href="/blog">Blog</a>
+                    <span class="pointer" @click="jumpPath('/blog')">Blog</span>
                     <span>/</span>
                     <span class="text-white">Guides</span>
                 </div>

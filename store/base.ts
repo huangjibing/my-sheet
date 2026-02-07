@@ -11,6 +11,9 @@ export const useBaseStore = defineStore("base", () => {
   const setProductAll = (list:any) => {
     productAll.value = productAll.value.concat(list);
   }
+  const getProductAll = () => {
+    return productAll.value;
+  }
   const classifyDiscountList = computed<string[]>(() => {
     return [
       "All Categories",
@@ -137,7 +140,9 @@ export const useBaseStore = defineStore("base", () => {
   };
 
   return {
+    productAll,
     setProductAll,
+    getProductAll,
     getSearchProductList,
     getProductList,
     classifyDiscountList,

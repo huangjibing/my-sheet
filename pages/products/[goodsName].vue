@@ -29,7 +29,7 @@ const toPage = () => {
   router.go(-1);
 }
 
-const productInfo = ref<Product>();
+const productInfo = ref<any>();
 const coverList = ref<string[]>([]);
 const coverIndex = ref(0);
 const setCoverIndex = (index:number) => {
@@ -44,9 +44,16 @@ const toSpreadsheetCategory = (category:string) => {
   }
   jumpPath('/vigorbuybuy-spreadsheet', newQuery)
 }
+const loading = ref(true);
 onMounted(() => {
-  productInfo.value = baseStore.getIdProductInfo(parseInt(goodsName));
-  coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
+  queryDataByKey("productDB", "products", parseInt(goodsName)).then(data => {
+    productInfo.value = data;
+    coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
+  }).catch(err => {
+
+  }).finally(() => {
+    loading.value = false;
+  })
 })
 const coverImg = computed(() => {
   return coverList.value[coverIndex.value]
@@ -186,7 +193,7 @@ const coverImg = computed(() => {
         </div>
       </div>
     </template>
-    <template v-else>Product not found</template>
+    <!-- <template v-else>Product not found</template> -->
   </div>
 </template>
 
@@ -201,6 +208,8 @@ const coverImg = computed(() => {
   color: #ff186b;
 }
 .product-detail-wrapper{
+  min-height: 100vw;
+  min-height: 100vh;
   .to-page{
     line-height: 24px;
     display: inline-block;
