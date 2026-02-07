@@ -1,12 +1,16 @@
 import { defineStore } from "pinia";
-import products from "@/assets/json/products1.json";
+// import products from "@/assets/json/products1.json";
 import type { Product } from "@/types/base";
 import Fuse from 'fuse.js';
 
 export const useBaseStore = defineStore("base", () => {
-  const productAll = computed<Product[]>(() => {
-    return products;
-  });
+  // const productAll = computed<Product[]>(() => {
+  //   return products;
+  // });
+  const productAll = ref<Product[]>([]);
+  const setProductAll = (list:any) => {
+    productAll.value = list;
+  }
   const classifyDiscountList = computed<string[]>(() => {
     return [
       "All Categories",
@@ -133,6 +137,7 @@ export const useBaseStore = defineStore("base", () => {
   };
 
   return {
+    setProductAll,
     getSearchProductList,
     getProductList,
     classifyDiscountList,
