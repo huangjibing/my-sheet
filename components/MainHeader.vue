@@ -1,19 +1,32 @@
 <script setup lang="ts">
 import 'element-plus/theme-chalk/display.css'
 const isShowMenu = ref(false);
+const route = useRoute();
 const jumpPage = (path:string) => {
     isShowMenu.value = false;
     jumpPath(path);
 }
+const inviteCode = ref("");
+const openVigorbuy = () => {
+  if (inviteCode.value) {
+    openLink(`https://vigorbuy.com/?inviteCode=${inviteCode.value}&utm_source=vigorbuysheet`)
+  } else {
+    openLink(`https://vigorbuy.com/?utm_source=vigorbuysheet`)
+  }
+}
 onMounted(() => {
-})
+  inviteCode.value =
+    route.query.inviteCode?.toString() ||
+    localStorage.getItem("inviteCode") ||
+    "bkwNqLO7";
+});
 </script>
 <template>
     <div>
         <div class="mainheader">
         <el-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23">
             <div class="flex justify-between">
-                <div class="main-logo">
+                <div class="main-logo" @click="jumpPath('/')">
                     <img width="40" height="40" src="@/assets/logo/icon.webp" alt="">
                     <div class="min-header-text">
                         <span class="text to-red-700">Vigorbuy Sheet</span>
@@ -50,7 +63,7 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <div class="coupons-btn">
+                <div class="coupons-btn" @click="openVigorbuy()">
                     <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5"></i>
                     <span>Get Vigorbuy Coupons</span>
                 </div>

@@ -35,7 +35,7 @@ onMounted(() => {
   inviteCode.value =
     route.query.inviteCode?.toString() ||
     localStorage.getItem("inviteCode") ||
-    "";
+    "bkwNqLO7";
 })
 </script>
 

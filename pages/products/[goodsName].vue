@@ -1,19 +1,14 @@
 <script setup lang="ts">
-import { useBaseStore } from "@/store/base";
-import type { Product } from '~/types/base';
-
 const route = useRoute();
 const router = useRouter();
 const goodsName = route.params.goodsName.toString();
-
-const baseStore = useBaseStore();
 
 const inviteCode = ref("");
 onMounted(() => {
   inviteCode.value =
     route.query.inviteCode?.toString() ||
     localStorage.getItem("inviteCode") ||
-    "";
+    "bkwNqLO7";
 });
 
 const openGoods = () => {

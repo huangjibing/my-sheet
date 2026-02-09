@@ -223,7 +223,7 @@ export async function clearStoreData(dbName:string, storeName:string) {
 
     return new Promise((resolve, reject) => {
       clearRequest.onsuccess = () => {
-        console.log(`✅ ${storeName}表数据已全部清空`);
+        // console.log(`✅ ${storeName}表数据已全部清空`);
         db.close();
         resolve(true);
       };
@@ -260,7 +260,7 @@ export async function queryDataByKey(dbName:string, storeName:string, primaryKey
     return new Promise((resolve, reject) => {
       queryRequest.onsuccess = () => {
         const data = queryRequest.result;
-        console.log(`✅ 主键${primaryKey}查询结果：`, data);
+        // console.log(`✅ 主键${primaryKey}查询结果：`, data);
         db.close();
         resolve(data); // 无数据时返回null
       };
