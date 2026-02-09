@@ -49,9 +49,6 @@ onMounted(() => {
   queryDataByKey("productDB", "products", parseInt(goodsName)).then(data => {
     productInfo.value = data;
     coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
-  }).catch(err => {
-    productInfo.value = baseStore.getIdProductInfo(parseInt(goodsName));
-    coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
   }).finally(() => {
     loading.value = false;
   })
@@ -155,7 +152,7 @@ const coverImg = computed(() => {
               </div>
             </div>
 
-            <div class="info-price-card bg-gradient-to-r from-pink-300 to-pink-100">
+            <div class="info-price-card bg-gradient-to-r from-pink-200 to-pink-100">
               <h3 class="text-gray-700">PRICING</h3>
 
               <div class="price-item">
