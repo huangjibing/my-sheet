@@ -23,89 +23,97 @@ onMounted(() => {
 </script>
 <template>
     <div>
-        <div class="mainheader">
+        <div class="mainheader bg-[#121212]">
         <el-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23">
             <div class="flex justify-between">
                 <div class="main-logo" @click="jumpPath('/')">
-                    <img width="40" height="40" src="@/assets/logo/icon.webp" alt="">
+                    <img width="30" height="30" src="@/assets/logo/icon.webp" alt="">
                     <div class="min-header-text">
                         <span class="text to-red-700">Vigorbuy Sheet</span>
                     </div>
                 </div>
 
                 <div class="main-pages hidden-xs-only">
-                    <div class="item"
+                    <div class="item relative text-gray-400 hover:text-white"
                     @click="jumpPage('/')"
-                    :class="{ 'select-page': $route.name?.toString().endsWith('index') }">
-                        <i class="icon iconfont icon-shouye"></i>
-                        <span class="name">Vigorbuy Sheet</span>
+                    :class="{'text-white': $route.name?.toString().endsWith('index')}">
+                        <span v-if="$route.name?.toString().endsWith('index')" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <!-- <i class="icon iconfont icon-shouye"></i> -->
+                        <span class="name relative z-10">Home</span>
                     </div>
 
-                    <div class="item"
+                    <div class="item relative text-gray-400 hover:text-white"
                     @click="jumpPage('/vigorbuybuy-spreadsheet')"
-                    :class="{ 'select-page': $route.name === 'vigorbuybuy-spreadsheet' }">
-                        <i class="icon iconfont icon-biaoge"></i>
-                        <span class="name">Spreadsheet</span>
+                    :class="{'text-white': $route.name === 'vigorbuybuy-spreadsheet'}"
+                    >
+                        <span v-if="$route.name === 'vigorbuybuy-spreadsheet'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <!-- <i class="icon iconfont icon-biaoge"></i> -->
+                        <span class="name relative z-10">Spreadsheet</span>
                     </div>
                     
-                    <div class="item"
+                    <div class="item relative text-gray-400 hover:text-white"
                     @click="jumpPage('/qc-pictures')"
-                    :class="{ 'select-page': $route.name === 'qc-pictures' }">
-                        <i class="icon iconfont icon-xiangji_o"></i>
-                        <span class="name">QC Pictures</span>
+                    :class="{'text-white': $route.name === 'qc-pictures'}"
+                    >
+                        <span v-if="$route.name === 'qc-pictures'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <!-- <i class="icon iconfont icon-xiangji_o"></i> -->
+                        <span class="name relative z-10">QC Pictures</span>
                     </div>
 
-                    <div class="item"
+                    <div class="item relative text-gray-400 hover:text-white"
                     @click="jumpPage('/blog')"
-                    :class="{ 'select-page': $route.name === 'blog' }">
-                        <i class="icon iconfont icon-shu"></i>
-                        <span class="name">Guides</span>
+                    :class="{'text-white': $route.name === 'blog'}"
+                    >
+                        <span v-if="$route.name === 'blog'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <!-- <i class="icon iconfont icon-shu"></i> -->
+                        <span class="name relative z-10">Guides</span>
                     </div>
                 </div>
 
-                <div class="coupons-btn" @click="openVigorbuy()">
+                <div class="coupons-btn text-white inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click="openVigorbuy()">
                     <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5"></i>
                     <span>Get Vigorbuy Coupons</span>
                 </div>
 
-                <div class="main-menu" @click="isShowMenu = !isShowMenu">
-                    <i class="icon iconfont" :class="{'icon-guanbi': isShowMenu, 'icon-a-11': !isShowMenu}"></i>
+                <div class="main-menu text-white" @click="isShowMenu = !isShowMenu">
+                    <i class="icon iconfont icon-guanbi" v-if="isShowMenu"></i>
+                    <i class="icon iconfont icon-a-11" v-if="!isShowMenu"></i>
                 </div>
             </div>
         </el-col>
         </div>
-        <div class="main-menu-liet" v-if="isShowMenu">
+        <div class="main-menu-liet bg-[#1E1E1E]" v-if="isShowMenu">
             <el-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23">
                 <div class="menu-list">
-                    <div class="item"
+                    <div class="item text-gray-300"
                     @click="jumpPage('/')"
-                    :class="{ 'select-page': $route.name?.toString().endsWith('index') }">
+                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name?.toString().endsWith('index') }">
                         <i class="icon iconfont icon-shouye"></i>
-                        <span class="name">Vigorbuy Sheet</span>
+                        <span class="name">Home</span>
                     </div>
 
-                    <div class="item"
+                    <div class="item text-gray-300"
                     @click="jumpPage('/vigorbuybuy-spreadsheet')"
-                    :class="{ 'select-page': $route.name === 'vigorbuybuy-spreadsheet' }">
+                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'vigorbuybuy-spreadsheet' }">
                         <i class="icon iconfont icon-biaoge"></i>
                         <span class="name">Spreadsheet</span>
                     </div>
 
-                    <div class="item"
+                    <div class="item text-gray-300"
                     @click="jumpPage('/qc-pictures')"
-                    :class="{ 'select-page': $route.name === 'qc-pictures' }">
+                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'qc-pictures' }">
                         <i class="icon iconfont icon-xiangji_o"></i>
                         <span class="name">QC Pictures</span>
                     </div>
 
-                    <div class="item"
+                    <div class="item text-gray-300"
                     @click="jumpPage('/blog')"
-                    :class="{ 'select-page': $route.name === 'blog' }">
+                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'blog' }">
                         <i class="icon iconfont icon-shu"></i>
                         <span class="name">Guides</span>
                     </div>
 
-                    <div class="buy-btn">
+                    <div class="buy-btn inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full">
                         Get Oopbuy Coupons
                     </div>
                 </div>
@@ -114,17 +122,13 @@ onMounted(() => {
     </div>
 </template>
 <style lang="scss" scoped>
-.select-page{
-    color: #ff186b !important;
-    background-color: #FEE7F0 !important;
-}
 .mainheader{
     height: 64px;
     // background-color: #fff;
     /* 核心毛玻璃属性 */
-    background: rgba(255, 255, 255, 0.7); /* 白色半透明，可改 rgba(0,0,0,0.2) 深色玻璃 */
-    backdrop-filter: blur(40px); /* 模糊半径，数值越大越模糊（推荐8-15px） */
-    -webkit-backdrop-filter: blur(40px); /* 兼容 Safari */
+    // background: rgba(255, 255, 255, 0.7); /* 白色半透明，可改 rgba(0,0,0,0.2) 深色玻璃 */
+    // backdrop-filter: blur(40px); /* 模糊半径，数值越大越模糊（推荐8-15px） */
+    // -webkit-backdrop-filter: blur(40px); /* 兼容 Safari */
 
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5); /* 阴影增强 */
     display: flex;
@@ -165,7 +169,7 @@ onMounted(() => {
             align-items: center;
             padding: 0px 20px;
             border-radius: 8px;
-            color: #666;
+            // color: #666;
             cursor: pointer;
             .icon{
                 font-size: 16px;
@@ -177,17 +181,16 @@ onMounted(() => {
                 line-height: 40px;
             }
             &:hover{
-                background-color: rgba(226, 222, 222, 0.4);
-                color: #333;
+                // background-color: rgba(226, 222, 222, 0.4);
+                // color: #fff;
             }
         }
     }
     .coupons-btn{
         height: 40px;
         line-height: 40px;
-        color: #fff;
         text-align: center;
-        background-color: #ff186b;
+        // background-color: #ff186b;
         border-radius: 8px;
         height: 40px;
         width: 207px;
@@ -215,7 +218,7 @@ onMounted(() => {
     }
     .main-menu-liet{
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-        background-color: #fff;
+        // background-color: #fff;
         padding-top: 10px;
         padding-bottom: 10px;
         display: flex;
@@ -232,7 +235,6 @@ onMounted(() => {
                 display: flex;
                 align-items: center;
                 gap: 6px;
-                color: #666;
                  .icon{
                     font-size: 16px;
                     font-weight: 900;
@@ -242,14 +244,9 @@ onMounted(() => {
                     font-weight: 600;
                     line-height: 40px;
                 }
-                &:hover{
-                    background-color: rgba(226, 222, 222, 0.4);
-                    color: #333;
-                }
             }
         }
         .buy-btn{
-            background-color: #ff186b;
             border-radius: 8px;
             height: 48px;
             text-align: center;
@@ -260,16 +257,11 @@ onMounted(() => {
         }
     }
     .main-menu{
-        // display: block !important;
         display: flex !important;
         align-items: center;
         justify-content: center;
         font-size: 18px;
         cursor: pointer;
-        border-radius: 8px;
-        &:hover{
-            background-color: var(--color-gray-100);
-        }
     }
 }
 

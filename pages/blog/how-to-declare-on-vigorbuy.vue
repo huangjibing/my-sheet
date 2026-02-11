@@ -2,10 +2,10 @@
 import BlogLc from '@/assets/blog/blog-lc.webp'
 </script>
 <template>
-    <div class="min-h-screen bg-[#0B1120]">
-        <div class="relative h-[400px] sm:h-[500px] bg-[#111827]">
+    <div class="min-h-screen bg-[#121212]">
+        <div class="relative h-[400px] sm:h-[500px] bg-[#121212]">
             <el-image fit="cover" class="object-cover opacity-40" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;" loading="lazy" :src="BlogLc" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0B1120] to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#121212] to-transparent"></div>
             <div class="relative h-full max-w-4xl mx-auto px-4 sm:!px-6 lg:!px-8 flex flex-col justify-end pb-12">
                 <div class="flex items-center gap-2 text-slate-400 text-sm mb-4">
                     <span class="pointer" @click="jumpPath('/')">Home</span>
@@ -43,7 +43,7 @@ import BlogLc from '@/assets/blog/blog-lc.webp'
         </div>
 
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="bg-[#1E293B] rounded-2xl p-6 mb-8 border-l-4 border-[#FF186B]">
+            <div class="bg-gray-700 rounded-2xl p-6 mb-8 border-l-4 border-[#FF186B]">
                 <p class="text-lg text-slate-300 leading-relaxed font-medium">
                     Learn the correct declaration values for each country to avoid customs fees and delays. Country-specific thresholds for USA, UK, Canada, Germany, and more.
                 </p>

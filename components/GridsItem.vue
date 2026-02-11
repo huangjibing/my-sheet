@@ -7,7 +7,7 @@ const props = defineProps<Props>();
 
 </script>
 <template>
-    <div class="grids-item" @click="jumpPath(grids.page)">
+    <div class="grids-item border border-white/10 bg-white/5" @click="jumpPath(grids.page)">
         <div class="grids-img-wrapper">
             <el-image fit="cover" class="grids-img" loading="lazy" :src="grids.image" />
         </div>
@@ -20,7 +20,7 @@ const props = defineProps<Props>();
                 </div>
             </div>
 
-            <h3 class="title text-lg font-bold mb-2 line-clamp-2 transition-colors">
+            <h3 class="title text-lg font-bold mb-2 line-clamp-2 transition-colors text-white">
                {{ grids.title }}
             </h3>
 
@@ -38,15 +38,14 @@ const props = defineProps<Props>();
 <style lang="scss" scoped>
 .grids-item{
     cursor: pointer;
-    background-color: #fff;
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgb(226, 232, 240);
     &:hover{
+        transform: translateY(-8px);
         .grids-img{
           transform: scale(1.1); /* 轻微放大 */
         }

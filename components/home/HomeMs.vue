@@ -8,8 +8,8 @@
             <span class="subtitle text-2xl sm:!text-3xl md:!text-4xl mb-2">The Complete Vigorbuy Spreadsheet</span>
 
             <div class="describe max-w-3xl mx-auto">
-                <p class="mt-30 text-gray-700 text-lg sm:!text-xl">Find verified products from Taobao, 1688, and Weidian in one searchable database. Built for buyers who want to skip the guesswork and shop with confidence.</p>
-                <p class="mt-10 text-gray-700">Over 10,000 products with QC photos, working links, and real pricing. Updated daily. Free to use.</p>
+                <p class="mt-30 text-gray-400 text-lg sm:!text-xl">Find verified products from Taobao, 1688, and Weidian in one searchable database. Built for buyers who want to skip the guesswork and shop with confidence.</p>
+                <p class="mt-10 text-gray-500">Over 10,000 products with QC photos, working links, and real pricing. Updated daily. Free to use.</p>
             </div>
 
             <div class="homems-btn">
@@ -18,7 +18,7 @@
                     <i class="icon iconfont icon-youjiantou ml-8"></i>
                 </div>
 
-                <div class="the-lw">
+                <div class="the-lw text-white inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full">
                     <i class="icon iconfont icon-liwuhuodong"></i>
                     <span class="ml-5">Get Vigorbuy Coupons</span>
                 </div>
@@ -132,7 +132,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    border: 2px solid #E5E7EB;
+                    // border: 2px solid #E5E7EB;
                     border-radius: 40px;
                     cursor: pointer;
                     &:hover{

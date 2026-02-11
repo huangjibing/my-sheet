@@ -17,7 +17,7 @@ const changePage = (value:number) => {
 }
 </script>
 <template>
-    <div class="mainpagination-wrappe">
+    <div class="mainpagination-wrappe border border-white/10 bg-white/5">
         <div class="font-12 text-gray-500 bold-600">
             <span>Showing</span>
             <span class="text-c92910">&nbsp;{{ size }}</span>
@@ -27,15 +27,15 @@ const changePage = (value:number) => {
         </div>
 
         <div class="btn">
-            <div class="previous" :class="{'disable': page <= 1, 'unblock-previous': page > 1}"  @click="changePage(-1)">
+            <div class="previous" :class="{'disable': page <= 1, 'unblock-previous inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full': page > 1}"  @click="changePage(-1)">
                 <i class="icon iconfont icon-xiangzuojiantou font-12"></i>
                 <span>Previous</span>
             </div>
-            <div class="page text-gray-700 bold-600">
+            <div class="page text-white inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40 bold-600">
                 <span>Page&nbsp;</span>
                 <span>{{ page }}</span>
             </div>
-            <div class="next" :class="{'disable': page >= maxPage, 'unblock-next': page < maxPage}" @click="changePage(1)">
+            <div class="next" :class="{'disable': page >= maxPage, 'unblock-next inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full': page < maxPage}" @click="changePage(1)">
                 <span>Next</span>
                 <i class="icon iconfont icon-xiangyoujiantou font-12"></i>
             </div>
@@ -51,33 +51,31 @@ const changePage = (value:number) => {
     cursor: not-allowed;
 }
 .unblock-previous{
-    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
+    // background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
     cursor: pointer;
      &:hover{
         transform: scale(1.05);
-        background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
-        .icon{
-            transform: translateX(-3px)
-        }
+        // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
+        // .icon{
+        //     transform: translateX(-3px)
+        // }
     }
 }
 .unblock-next{
-    background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
+    // background-image: linear-gradient(to right, rgb(201, 41, 16) 0%, #C40003 100%);
     cursor: pointer;
      &:hover{
         transform: scale(1.05);
-        background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
-        .icon{
-            transform: translateX(3px)
-        }
+        // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
+        // .icon{
+        //     transform: translateX(3px)
+        // }
     }
 }
 .mainpagination-wrappe{
     display: flex;
     justify-content: space-between;
     padding: 30px;
-    background-color: #fff;
-    border: 1px solid #E5E7EB;
     border-radius: 16px;
     align-items: center;
     .btn{
@@ -102,8 +100,8 @@ const changePage = (value:number) => {
             transition: transform 0.3s ease;
         }
         .page{
-            background-image: linear-gradient(to right, #F1E8FF 0%, #FCE7F3 100%);
-            border: 1px solid #CD2A0D;
+            // background-image: linear-gradient(to right, #F1E8FF 0%, #FCE7F3 100%);
+            // border: 1px solid #CD2A0D;
             padding: 0px 24px;
         }
         .next{

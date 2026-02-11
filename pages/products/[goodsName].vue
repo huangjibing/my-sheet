@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useBaseStore } from '~/store/base';
 const route = useRoute();
 const router = useRouter();
 const goodsName = route.params.goodsName.toString();
+const baseStore = useBaseStore();
 
 const inviteCode = ref("");
 onMounted(() => {
@@ -41,12 +43,19 @@ const toSpreadsheetCategory = (category:string) => {
 }
 const loading = ref(true);
 onMounted(() => {
-  queryDataByKey("productDB", "products", parseInt(goodsName)).then(data => {
-    productInfo.value = data;
+  let productInfos = baseStore.getIdProductInfo(parseInt(goodsName));
+  if (productInfos) {
+    productInfo.value = productInfos;
     coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
-  }).finally(() => {
     loading.value = false;
-  })
+  } else {
+    queryDataByKey("productDB", "products", parseInt(goodsName)).then(data => {
+      productInfo.value = data;
+      coverList.value = [productInfo.value?.image || ''].concat(productInfo.value?.qcImage || []);
+    }).finally(() => {
+      loading.value = false;
+    })
+  }
 })
 const coverImg = computed(() => {
   return coverList.value[coverIndex.value]
@@ -76,7 +85,7 @@ const coverImg = computed(() => {
             </span>
             <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
 
-            <span class="ml-5">
+            <span class="ml-5 text-white">
               {{ productInfo?.goodsTitle }}
             </span>
           </div>
@@ -87,9 +96,9 @@ const coverImg = computed(() => {
           </div>
         </div>
 
-        <div class="detail-content grid lg:grid-cols-2 gap-8 mt-6 mb-4">
+        <div class="detail-content grid lg:grid-cols-2 gap-8 mt-6">
           <div class="detail-img-wrapper">
-            <div class="detail-img-cover">
+            <div class="detail-img-cover border border-white/10 bg-white/5">
               <div class="img-box">
                 <el-image fit="cover" class="product-img" loading="lazy" :src="coverImg" />
               </div>
@@ -105,7 +114,7 @@ const coverImg = computed(() => {
                 </div>
               </div>
               
-              <div class="cover-text">
+              <div class="cover-text text-gray-400">
                 <span>image</span>
                 <span class="index bold-600">&nbsp;{{ coverIndex + 1 }}&nbsp;</span>
                 <span>of</span>
@@ -115,7 +124,7 @@ const coverImg = computed(() => {
           </div>
 
           <div class="detail-info-wrapper">
-            <div class="info-basic-card">
+            <div class="info-basic-card border border-white/10 bg-white/5">
               <div class="flex gap-12 mb-4">
                 <div style="height: 30px; display: flex; align-items: center; padding: 0px 15px; border-radius: 15px;background-color: #FEE7F0;color: #ff186b;">
                   <i class="icon iconfont icon-biaoqian font-12 bold-600"></i>
@@ -128,13 +137,13 @@ const coverImg = computed(() => {
                 </div>
               </div>
 
-              <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight">{{ productInfo.goodsTitle }}</h1>
+              <h1 class="text-3xl md:text-4xl font-bold mb-4 leading-tight text-white">{{ productInfo.goodsTitle }}</h1>
 
               <p class="text-slate-400 leading-relaxed">
                 No description available for this product.
               </p>
 
-              <div class="mt-4 pt-8 border-t border-gray-100 flex">
+              <div class="mt-4 pt-8 border-t border-gray-600 flex">
 
                 <div style="width: 32px;height: 32px;border-radius: 50%;background-color: #FEE7F0;color: #ff186b;display: flex;align-items: center;justify-content: center;">
                   <i class="icon iconfont icon-fangxunrenyuan font-14"></i>
@@ -142,44 +151,44 @@ const coverImg = computed(() => {
 
                 <div class="ml-10">
                   <p class="font-11 text-gray-500 bold-500">Listed by</p>
-                  <p class="font-12 bold-600">manyouyisi</p>
+                  <p class="font-12 bold-600 text-white">manyouyisi</p>
                 </div>
               </div>
             </div>
 
-            <div class="info-price-card bg-gradient-to-r from-pink-200 to-pink-100">
-              <h3 class="text-gray-700">PRICING</h3>
+            <div class="info-price-card inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40">
+              <h3 class="text-gray-200">PRICING</h3>
 
               <div class="price-item">
-                <span class="text-gray-700 font-16">USD</span>
+                <span class="text-gray-200 font-16">USD</span>
                 <span class="bold-600 font-24" style="color: #ff186b;">${{ productInfo.discountedPrice }}</span>
               </div>
             </div>
 
-            <div class="info-now-buy" @click="openGoods">
+            <div class="info-now-buy inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click="openGoods">
               <i class="icon iconfont icon-shiwu-gouwuche font-24 bold-500"></i>
               <span class="ml-10 bold-500 font-18">Buy Now on VigorBuy</span>
             </div>
 
-            <div class="info-detail-card">
+            <div class="info-detail-card border border-white/10 bg-white/5">
               <div class="mb-7">
                 <i class="icon iconfont icon-tishi font-16 bold-500 text-ff186b"></i>
-                <span class="ml-5 bold-500 font-16">Product Details</span>
+                <span class="ml-5 bold-500 font-16 text-white">Product Details</span>
               </div>
 
-              <div class="item border-gray-100 border-b font-16">
-                <span class="text-gray-600">Platform</span>
-                <span class="bold-600">Weidian</span>
+              <div class="item border-gray-600 border-b font-16">
+                <span class="text-gray-500">Platform</span>
+                <span class="bold-600 text-white">Weidian</span>
               </div>
 
-              <div class="item border-gray-100 border-b font-16">
-                <span class="text-gray-600">Category</span>
-                <span class="bold-600">{{ productInfo.typeName }}</span>
+              <div class="item border-gray-600 border-b font-16">
+                <span class="text-gray-500">Category</span>
+                <span class="bold-600 text-white">{{ productInfo.typeName }}</span>
               </div>
 
-              <div class="item border-gray-100 border-b font-16">
-                <span class="text-gray-600">Product ID</span>
-                <span class="bold-600">{{ productInfo.offerId }}</span>
+              <div class="item border-gray-600 border-b font-16">
+                <span class="text-gray-500">Product ID</span>
+                <span class="bold-600 text-white">{{ productInfo.offerId }}</span>
               </div>
             </div>
           </div>
@@ -215,7 +224,7 @@ const coverImg = computed(() => {
     margin-top: 22px;
     .detail-img-wrapper{
       .detail-img-cover{
-        border: 1px solid #E5E7EB;
+        // border: 1px solid #E5E7EB;
         padding: 20px;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
@@ -278,7 +287,6 @@ const coverImg = computed(() => {
       flex: 1;
       .info-basic-card{
         padding: 24px;
-        border: 1px solid #E5E7EB;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
       }
@@ -300,7 +308,6 @@ const coverImg = computed(() => {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%);
         color: #fff;
         border-radius: 12px;
         cursor: pointer;
@@ -313,7 +320,6 @@ const coverImg = computed(() => {
       .info-detail-card{
         margin-top: 20px;
         padding: 24px;
-        border: 1px solid #E5E7EB;
         border-radius: 16px;
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
         .item{

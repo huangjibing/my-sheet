@@ -65,7 +65,7 @@ const searchChangeEmit = () => {
 const searchChange = debounce(searchChangeEmit, 500);
 </script>
 <template>
-    <el-row :gutter="12" class="search-input">
+    <el-row :gutter="12" class="search-input border border-white/10 bg-white/5">
       <el-col :xs="24" :sm="10" :md="12" :lg="14" :xl="16" class="search-col">
         <div style="height: 60px;" class="input-height">
           <el-input
@@ -111,11 +111,11 @@ const searchChange = debounce(searchChangeEmit, 500);
 </template>
 <style lang="scss" scoped>
 .search-input{
-  border: 1px solid #CD2A0D;
+  // border: 1px solid #CD2A0D;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   padding: 24px;
   border-radius: 24px;
-  background-color: #fff;
+  // background-color: #fff;
 }
 .input-height{
   height: 60px;

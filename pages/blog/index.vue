@@ -62,27 +62,31 @@ const gridsList = computed<GirdsItem[]>(() => {
 </script>
 <template>
     <div class="blog-wrapper max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 pt-12">
-        <div class="blog-header flex">
-            <div class="to-home pointer" @click="jumpPath('/')">
-                <span class="ml-3">← Back to Home</span>
-            </div>
-
-            <div class="tips bold-500 gap-1">
+        <div class="mb-4 font-14">
+            <span class="home text-gray-500 pointer" @click="jumpPath('/')">
+                <i class="icon iconfont icon-shouye"></i>
+                <span class="ml-3">Home</span>
+            </span>
+            <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
+            <span class="ml-5 text-white">Guides</span>
+        </div>
+        <div class="animate-fade-in-down blog-header flex mb-4">
+            <div class="tips bold-500">
                 <i class="icon iconfont icon-shu bold-700"></i>
-                <span>Guides & Tips</span>
+                <span class="ml-2">Vigorbuy Shopping Guides</span>
             </div>
         </div>
 
-        <h1 class="text-center text-4xl sm:!text-5xl lg:!text-6xl font-black mb-4 text-gradient-pink">
+        <h1 class="animate-fade-in-up text-center text-4xl sm:text-5xl lg:text-6xl font-black mb-4 text-gradient-pink">
             Shopping Guides
         </h1>
 
-        <p class="text-center text-lg max-w-3xl mx-auto mb-12">
+        <p class="animate-fade-in-up text-center text-lg max-w-3xl mx-auto mb-12 text-gray-500">
             Expert guides on shipping, declarations, coupons, and shopping from Taobao, 1688, and Weidian.
         </p>
 
         <div class="mb-12">
-            <div class="blog-card">
+            <div class="blog-card border border-white/10 bg-white/5">
                 <div class="item" style="flex: 1;">
                     <el-image fit="cover" class="product-img" style="height: 100%;" loading="lazy" :src="BlogLc" />
                 </div>
@@ -99,10 +103,10 @@ const gridsList = computed<GirdsItem[]>(() => {
                         6 min read
                        </div>
                     </div>
-                    <h2 class="text-3xl font-bold mb-4 leading-tight">How to Declare on Vigorbuy: Complete Customs Declaration Guide 2025</h2>
+                    <h2 class="text-3xl font-bold mb-4 leading-tight text-white">How to Declare on Vigorbuy: Complete Customs Declaration Guide 2025</h2>
                     <p class="text-slate-400 mb-6 leading-relaxed">Learn the correct declaration values for each country to avoid customs fees and delays. Country-specific thresholds for USA, UK, Canada, Germany, and more.</p>
 
-                    <div class="guide-btn px-6 py-3 gap-2" @click="jumpPath('/blog/how-to-declare-on-vigorbuy')">
+                    <div class="guide-btn px-6 py-3 gap-2 bg-gradient-to-r from-[#ff3eaa] to-[#008cff]" @click="jumpPath('/blog/how-to-declare-on-vigorbuy')">
                         <span>Read Full Guide</span>
                         <i class="icon iconfont icon-youjiantou"></i>
                     </div>
@@ -111,10 +115,10 @@ const gridsList = computed<GirdsItem[]>(() => {
         </div>
 
         <div class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">All Guides</h2>
+            <h2 class="text-2xl font-bold mb-6 text-gray-500">All Guides</h2>
 
             <div class="grids-list">
-                <GridsItem 
+                <GridsItem
                 v-for="(item,index) in gridsList"
                 :grids="item"
                 :key="index" />
@@ -125,6 +129,32 @@ const gridsList = computed<GirdsItem[]>(() => {
     </div>
 </template>
 <style lang="scss" scoped>
+@keyframes fadeInDown{
+    0%{
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes fadeInUp {
+    0%{
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.animate-fade-in-down{
+    animation: .6s ease-out forwards fadeInDown;
+}
+.animate-fade-in-up{
+    animation: .6s ease-out forwards fadeInUp;
+}
 .blog-wrapper{
     padding-top: 30px;
     .blog-header{
@@ -154,13 +184,12 @@ const gridsList = computed<GirdsItem[]>(() => {
         border-radius: 24px;
         overflow: hidden;
         display: flex;
-        border: 1px solid rgb(226, 232, 240);
         .item{
             width: 50%;
             .guide-btn{
                 display: inline-flex;
                 border-radius: 8px;
-                background-color: rgba($color: #ff186b, $alpha: 1);
+                // background-color: rgba($color: #ff186b, $alpha: 1);
                 filter: brightness(1.1);
                 color: #fff;
                 cursor: pointer;

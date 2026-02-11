@@ -30,7 +30,7 @@ onMounted(() => {
 <el-scrollbar class="home-scroll" ref="scrollWrapper" @scroll="handleScroll">
     <div class="home-container">
         <MainHeader class="header-layout" />
-        <div class="content-wrapper">
+        <div class="content-wrapper bg-[#121212]">
             <slot></slot>
         </div>
     </div>
@@ -49,6 +49,7 @@ onMounted(() => {
         }
         .content-wrapper{
             margin-top: 60px;
+            min-height: calc(100vh - 60px);
         }
     }
 </style>

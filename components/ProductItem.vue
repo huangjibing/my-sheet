@@ -41,7 +41,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="product-item"
+    class="product-item border border-white/10 bg-white/5"
     @click="handleGoProductDetail(productInfo.id)"
   >
     <div>
@@ -63,7 +63,7 @@ onMounted(() => {
 
       <div class="product-info">
         <div class="info-text">
-          <h3 class="text-gray-900 wrap-line-2">{{ productInfo.goodsTitle }}</h3>
+          <h3 class="text-white wrap-line-2">{{ productInfo.goodsTitle }}</h3>
           <p class="text-gray-600 font-13 mt-3">No description available</p>
           <p class="text-gray-600 font-13 mt-3">
             <i class="icon iconfont icon-fangxunrenyuan"></i>
@@ -84,7 +84,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="buy-btn" @click.stop="openGoods">
+    <div class="buy-btn inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click.stop="openGoods">
       <span>Buy Now</span>
       <i class="icon iconfont icon-tiaozhuan font-13 ml-5"></i>
     </div>
@@ -98,7 +98,6 @@ onMounted(() => {
 }
 .product-item {
   cursor: pointer;
-  background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -230,7 +229,7 @@ onMounted(() => {
   }
   .buy-btn{
     border-radius: 8px;
-    background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
+    // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
     font-size: 14px;
     font-weight: 700;
     color: #fff;

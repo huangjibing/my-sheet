@@ -57,7 +57,7 @@ const addUrlParam = () => {
 };
 </script>
 <template>
-    <div class="mainproduct-wrapper bg-gray-50">
+    <div class="mainproduct-wrapper">
         <div class="content-data">
             <SpreadsheetMainSearch
             @changeCategory="changeCategory"
@@ -77,7 +77,7 @@ const addUrlParam = () => {
                     <i class="icon iconfont icon-sousuo font-18 bold-600"></i>
                 </div>
 
-                <h3 class="text-xl font-bold text-gray-900 mb-2">No products found</h3>
+                <h3 class="text-xl font-bold text-gray-400 mb-2">No products found</h3>
                 <p class="text-gray-600 text-sm">Try different search terms or browse all categories</p>
             </div>
 

@@ -37,11 +37,11 @@ onUnmounted(() => {
                     <i class="icon iconfont icon-shouye"></i>
                     <span class="ml-3">Home</span>
                 </span>
-                <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12"></i>
-                <span class="ml-5">Vigorbuy Spreadsheet</span>
+                <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
+                <span class="ml-5 text-white">Vigorbuy Spreadsheet</span>
             </div>
 
-            <div class="text-3xl sm:text-4xl font-bold mb-3">
+            <div class="text-3xl sm:text-4xl font-bold mb-3 text-white">
                 <h1>Vigorbuy Spreadsheet</h1>
             </div>
 

@@ -2,7 +2,7 @@
 // bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white
 </script>
 <template>
-    <div class="bg-gray-900 text-white">
+    <div class="text-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm mb-6">
@@ -36,11 +36,12 @@
                          Search
                          </button> -->
 
-                         <button
-                         class="absolute right-2 top-1/2 custom-translate-y px-6 py-3 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                         style="background: linear-gradient(135deg, rgb(255, 24, 107) 0%, rgb(224, 21, 96) 100%); box-shadow: rgba(255, 24, 107, 0.4) 0px 10px 25px -5px;cursor: pointer;">
+                         <dev
+                         class="absolute right-2 top-1/2 custom-translate-y px-6 py-3 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all
+                         bg-gradient-to-r from-[#ff3eaa] to-[#008cff]"
+                         style="cursor: pointer;">
                          Search
-                         </button>
+                        </dev>
                     </div>
                 </form>
 
