@@ -95,8 +95,7 @@ export default defineNuxtConfig({
     "@element-plus/nuxt",
     "@nuxtjs/tailwindcss",
   ],
-  // tailwindcss: {
-  //   exposeConfig: false, // 避免配置暴露导致的冲突
-  //   viewer: true // 对应你能打开的 _tailwind/ 页面，保持开启即可
-  // }
+  tailwindcss: {
+    exposeConfig: true,
+  }
 });
