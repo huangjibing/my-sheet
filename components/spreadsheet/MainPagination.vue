@@ -23,7 +23,7 @@ const changePage = (value:number) => {
             <span class="text-c92910">&nbsp;{{ size }}</span>
             <span>&nbsp;products on page</span>
             <span>&nbsp;{{ page }}</span>
-            <span>&nbsp;Quantity of goods:{{ total }}</span>
+            <!-- <span>&nbsp;Quantity of goods:{{ total }}</span> -->
         </div>
 
         <div class="btn">

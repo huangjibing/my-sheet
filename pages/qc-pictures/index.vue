@@ -37,7 +37,7 @@
                          </button> -->
 
                          <button
-                         class="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-3 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                         class="absolute right-2 top-1/2 custom-translate-y px-6 py-3 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                          style="background: linear-gradient(135deg, rgb(255, 24, 107) 0%, rgb(224, 21, 96) 100%); box-shadow: rgba(255, 24, 107, 0.4) 0px 10px 25px -5px;cursor: pointer;">
                          Search
                          </button>
@@ -96,4 +96,7 @@
     </div>
 </template>
 <style lang="scss" scoped>
+.custom-translate-y {
+  transform: translateY(-50%);
+}
 </style>
