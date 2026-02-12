@@ -178,7 +178,7 @@ const showDiscordSet = () => {
               <span class="ml-10 bold-500 font-18">Buy Now on VigorBuy</span>
             </div>
 
-            <div class="transition hover:scale-105 rounded-[8px] text-center mt-5 pt-4 pb-4 border border-[#353535] bg-white/5 text-white pointer" @click="showDiscordSet">
+            <div class="transition hover:scale-[1.03] rounded-[8px] text-center mt-5 pt-4 pb-4 border border-[#353535] bg-white/5 text-white pointer" @click="showDiscordSet">
               <span>Join discord for more discounts</span>
             </div>
 
