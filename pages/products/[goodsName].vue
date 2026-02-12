@@ -39,7 +39,7 @@ const toSpreadsheetCategory = (category:string) => {
   const newQuery = {
     category
   }
-  jumpPath('/vigorbuybuy-spreadsheet', newQuery)
+  jumpPath('/vigorbuy-spreadsheet', newQuery)
 }
 const loading = ref(true);
 onMounted(() => {
@@ -75,7 +75,7 @@ const coverImg = computed(() => {
             </span>
             <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
 
-            <span class="home text-gray-500" @click="jumpPath('/vigorbuybuy-spreadsheet')">
+            <span class="home text-gray-500" @click="jumpPath('/vigorbuy-spreadsheet')">
                 <span class="ml-3">Spreadsheet</span>
             </span>
             <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
@@ -156,7 +156,7 @@ const coverImg = computed(() => {
               </div>
             </div>
 
-            <div class="info-price-card inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40">
+            <div class="info-price-card inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40">
               <h3 class="text-gray-200">PRICING</h3>
 
               <div class="price-item">
@@ -165,7 +165,7 @@ const coverImg = computed(() => {
               </div>
             </div>
 
-            <div class="info-now-buy inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click="openGoods">
+            <div class="info-now-buy inset-0 theme-btn rounded-full" @click="openGoods">
               <i class="icon iconfont icon-shiwu-gouwuche font-24 bold-500"></i>
               <span class="ml-10 bold-500 font-18">Buy Now on VigorBuy</span>
             </div>

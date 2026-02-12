@@ -1,7 +1,7 @@
 export function jumpPath(path: string, query?: Record<string, any>) {
   const route = useRoute();
   const router = useRouter();
-  sessionStorage.removeItem('vigorbuybuy-spreadsheet');
+  sessionStorage.removeItem('vigorbuy-spreadsheet');
   router.push({
     path,
     query,

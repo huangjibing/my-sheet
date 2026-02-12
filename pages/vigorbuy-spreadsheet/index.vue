@@ -5,13 +5,13 @@ const handleScroll = (options: MainScrollEventOptions) => {
     if (options.type != 'homeScroll') {
         return;
     }
-    sessionStorage.setItem('vigorbuybuy-spreadsheet', options.data.scrollTop.toString());
+    sessionStorage.setItem('vigorbuy-spreadsheet', options.data.scrollTop.toString());
 }
 const debouncedScroll = debounce(handleScroll, 100);
 onMounted(() => {
   mainScrollEvent.on(debouncedScroll);
   nextTick(() => {
-    const pos = sessionStorage.getItem('vigorbuybuy-spreadsheet');
+    const pos = sessionStorage.getItem('vigorbuy-spreadsheet');
     if (pos) {
         mainScrollEvent.emit({
             type: 'toScroll',

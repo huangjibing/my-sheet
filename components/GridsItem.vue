@@ -45,7 +45,7 @@ const props = defineProps<Props>();
     flex-direction: column;
     justify-content: space-between;
     &:hover{
-        transform: translateY(-8px);
+        transform: translateY(-4px);
         .grids-img{
           transform: scale(1.1); /* 轻微放大 */
         }

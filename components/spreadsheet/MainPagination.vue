@@ -27,15 +27,15 @@ const changePage = (value:number) => {
         </div>
 
         <div class="btn">
-            <div class="previous" :class="{'disable': page <= 1, 'unblock-previous inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full': page > 1}"  @click="changePage(-1)">
+            <div class="previous" :class="{'disable': page <= 1, 'unblock-previous inset-0 theme-btn rounded-full': page > 1}"  @click="changePage(-1)">
                 <i class="icon iconfont icon-xiangzuojiantou font-12"></i>
                 <span>Previous</span>
             </div>
-            <div class="page text-white inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40 bold-600">
+            <div class="page text-white inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40 bold-600">
                 <span>Page&nbsp;</span>
                 <span>{{ page }}</span>
             </div>
-            <div class="next" :class="{'disable': page >= maxPage, 'unblock-next inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full': page < maxPage}" @click="changePage(1)">
+            <div class="next" :class="{'disable': page >= maxPage, 'unblock-next inset-0 theme-btn rounded-full': page < maxPage}" @click="changePage(1)">
                 <span>Next</span>
                 <i class="icon iconfont icon-xiangyoujiantou font-12"></i>
             </div>

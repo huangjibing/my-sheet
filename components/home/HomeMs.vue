@@ -13,12 +13,12 @@
             </div>
 
             <div class="homems-btn">
-                <div class="the-admin" @click="jumpPath('/vigorbuybuy-spreadsheet')">
+                <div class="the-admin theme-btn" @click="jumpPath('/vigorbuy-spreadsheet')">
                     <span>Browse the Vigorbuy Spreadsheet</span>
                     <i class="icon iconfont icon-youjiantou ml-8"></i>
                 </div>
 
-                <div class="the-lw text-white inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full">
+                <div class="the-lw text-white inset-0 theme-btn rounded-full">
                     <i class="icon iconfont icon-liwuhuodong"></i>
                     <span class="ml-5">Get Vigorbuy Coupons</span>
                 </div>
@@ -85,7 +85,8 @@
             .title{
                 // font-size: 65px;
                 font-weight: 900;
-                background: linear-gradient(to right, rgb(255, 24, 107) 0%, #E80075 50%, #8328F9 100%);
+                // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #E80075 50%, #8328F9 100%);
+                background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
                 -webkit-background-clip: text; /* 兼容 Safari/Chrome */
                 background-clip: text;
                 color: transparent; /* 隐藏原文字颜色，露出渐变 */
@@ -107,7 +108,7 @@
                 margin-top: 30px;
                 justify-content: center;
                 .the-admin{
-                    background-color: rgb(255, 24, 107);
+                    // background-color: rgb(255, 24, 107);
                     height: 68px;
                     display: flex;
                     align-items: center;

@@ -37,16 +37,16 @@ onMounted(() => {
                     <div class="item relative text-gray-400 hover:text-white"
                     @click="jumpPage('/')"
                     :class="{'text-white': $route.name?.toString().endsWith('index')}">
-                        <span v-if="$route.name?.toString().endsWith('index')" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <span v-if="$route.name?.toString().endsWith('index')" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
                         <!-- <i class="icon iconfont icon-shouye"></i> -->
                         <span class="name relative z-10">Home</span>
                     </div>
 
                     <div class="item relative text-gray-400 hover:text-white"
-                    @click="jumpPage('/vigorbuybuy-spreadsheet')"
-                    :class="{'text-white': $route.name === 'vigorbuybuy-spreadsheet'}"
+                    @click="jumpPage('/vigorbuy-spreadsheet')"
+                    :class="{'text-white': $route.name === 'vigorbuy-spreadsheet'}"
                     >
-                        <span v-if="$route.name === 'vigorbuybuy-spreadsheet'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <span v-if="$route.name === 'vigorbuy-spreadsheet'" class="absolute inset-0 bg-gradient-to-r from-[#DAA520]/20 to-[#FF0000]/20 rounded-full border border-[#ff0033]/40"></span>
                         <!-- <i class="icon iconfont icon-biaoge"></i> -->
                         <span class="name relative z-10">Spreadsheet</span>
                     </div>
@@ -55,7 +55,7 @@ onMounted(() => {
                     @click="jumpPage('/qc-pictures')"
                     :class="{'text-white': $route.name === 'qc-pictures'}"
                     >
-                        <span v-if="$route.name === 'qc-pictures'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <span v-if="$route.name === 'qc-pictures'" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
                         <!-- <i class="icon iconfont icon-xiangji_o"></i> -->
                         <span class="name relative z-10">QC Pictures</span>
                     </div>
@@ -64,13 +64,13 @@ onMounted(() => {
                     @click="jumpPage('/blog')"
                     :class="{'text-white': $route.name === 'blog'}"
                     >
-                        <span v-if="$route.name === 'blog'" class="absolute inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40"></span>
+                        <span v-if="$route.name === 'blog'" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
                         <!-- <i class="icon iconfont icon-shu"></i> -->
                         <span class="name relative z-10">Guides</span>
                     </div>
                 </div>
 
-                <div class="coupons-btn text-white inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click="openVigorbuy()">
+                <div class="coupons-btn text-white inset-0 theme-btn rounded-full" @click="openVigorbuy()">
                     <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5"></i>
                     <span>Get Vigorbuy Coupons</span>
                 </div>
@@ -87,33 +87,33 @@ onMounted(() => {
                 <div class="menu-list">
                     <div class="item text-gray-300"
                     @click="jumpPage('/')"
-                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name?.toString().endsWith('index') }">
+                    :class="{ 'inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40': $route.name?.toString().endsWith('index') }">
                         <i class="icon iconfont icon-shouye"></i>
                         <span class="name">Home</span>
                     </div>
 
                     <div class="item text-gray-300"
-                    @click="jumpPage('/vigorbuybuy-spreadsheet')"
-                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'vigorbuybuy-spreadsheet' }">
+                    @click="jumpPage('/vigorbuy-spreadsheet')"
+                    :class="{ 'inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40': $route.name === 'vigorbuy-spreadsheet' }">
                         <i class="icon iconfont icon-biaoge"></i>
                         <span class="name">Spreadsheet</span>
                     </div>
 
                     <div class="item text-gray-300"
                     @click="jumpPage('/qc-pictures')"
-                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'qc-pictures' }">
+                    :class="{ 'inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40': $route.name === 'qc-pictures' }">
                         <i class="icon iconfont icon-xiangji_o"></i>
                         <span class="name">QC Pictures</span>
                     </div>
 
                     <div class="item text-gray-300"
                     @click="jumpPage('/blog')"
-                    :class="{ 'inset-0 bg-gradient-to-r from-[#ff3eaa]/20 to-[#008cff]/20 rounded-full border border-[#ff3eaa]/40': $route.name === 'blog' }">
+                    :class="{ 'inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40': $route.name === 'blog' }">
                         <i class="icon iconfont icon-shu"></i>
                         <span class="name">Guides</span>
                     </div>
 
-                    <div class="buy-btn inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full">
+                    <div class="buy-btn inset-0 theme-btn rounded-full">
                         Get Oopbuy Coupons
                     </div>
                 </div>
@@ -143,7 +143,8 @@ onMounted(() => {
             margin-left: 5px;
             font-size: 20px;
             font-weight: 900;
-            background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 浅粉 → 深粉，可替换颜色 */
+            // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 浅粉 → 深粉，可替换颜色 */
+            background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
       
             /* 让渐变仅显示在文字区域 */
             -webkit-background-clip: text; /* 兼容 Safari/Chrome */

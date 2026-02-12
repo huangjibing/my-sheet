@@ -6,7 +6,7 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm mb-6">
-                    <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: rgb(255, 24, 107);">
+                    <span class="w-2 h-2 rounded-full animate-pulse" style="background-color: #FF7F00;">
                     </span>
                     QC Picture Search
                 </div>
@@ -38,7 +38,7 @@
 
                          <dev
                          class="absolute right-2 top-1/2 custom-translate-y px-6 py-3 text-white font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all
-                         bg-gradient-to-r from-[#ff3eaa] to-[#008cff]"
+                         theme-btn"
                          style="cursor: pointer;">
                          Search
                         </dev>

@@ -61,7 +61,7 @@ const gridsList = computed<GirdsItem[]>(() => {
 })
 </script>
 <template>
-    <div class="blog-wrapper max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 pt-12">
+    <div class="blog-wrapper max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <div class="mb-4 font-14">
             <span class="home text-gray-500 pointer" @click="jumpPath('/')">
                 <i class="icon iconfont icon-shouye"></i>
@@ -77,7 +77,7 @@ const gridsList = computed<GirdsItem[]>(() => {
             </div>
         </div>
 
-        <h1 class="animate-fade-in-up text-center text-4xl sm:text-5xl lg:text-6xl font-black mb-4 text-gradient-pink">
+        <h1 class="animate-fade-in-up text-center text-4xl sm:text-5xl lg:text-6xl font-black mb-4 text-gradient-pink theme-btn">
             Shopping Guides
         </h1>
 
@@ -106,7 +106,7 @@ const gridsList = computed<GirdsItem[]>(() => {
                     <h2 class="text-3xl font-bold mb-4 leading-tight text-white">How to Declare on Vigorbuy: Complete Customs Declaration Guide 2025</h2>
                     <p class="text-slate-400 mb-6 leading-relaxed">Learn the correct declaration values for each country to avoid customs fees and delays. Country-specific thresholds for USA, UK, Canada, Germany, and more.</p>
 
-                    <div class="guide-btn px-6 py-3 gap-2 bg-gradient-to-r from-[#ff3eaa] to-[#008cff]" @click="jumpPath('/blog/how-to-declare-on-vigorbuy')">
+                    <div class="guide-btn px-6 py-3 gap-2 theme-btn" @click="jumpPath('/blog/how-to-declare-on-vigorbuy')">
                         <span>Read Full Guide</span>
                         <i class="icon iconfont icon-youjiantou"></i>
                     </div>
@@ -177,7 +177,7 @@ const gridsList = computed<GirdsItem[]>(() => {
     }
     .text-gradient-pink{
         -webkit-text-fill-color: transparent;
-        background: linear-gradient(135deg, #ff186b, #a855f7);
+        // background: linear-gradient(135deg, #ff186b, #a855f7);
         background-clip: text;
     }
     .blog-card{
@@ -189,7 +189,6 @@ const gridsList = computed<GirdsItem[]>(() => {
             .guide-btn{
                 display: inline-flex;
                 border-radius: 8px;
-                // background-color: rgba($color: #ff186b, $alpha: 1);
                 filter: brightness(1.1);
                 color: #fff;
                 cursor: pointer;
@@ -221,7 +220,7 @@ const gridsList = computed<GirdsItem[]>(() => {
         }
         .grids-list{
             grid-template-columns: repeat(1, 1fr) !important;
-            gap: 10px !important;
+            gap: 15px !important;
         }
     }
 }

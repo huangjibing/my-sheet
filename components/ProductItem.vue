@@ -47,7 +47,7 @@ onMounted(() => {
     <div>
       <div class="product-img-wrapper">
         <el-image fit="cover" class="product-img" loading="lazy" :src="productInfo.image + `?v=${version}`" />
-        <div class="product-tag">
+        <!-- <div class="product-tag">
           <div class="qc" @click.stop="baseStore.setPreviewImgInfo(productInfo.qcImage)">
             <i class="icon iconfont icon-biaoqian font-11"></i>
             <span class="tag wrap-line-1">
@@ -57,7 +57,7 @@ onMounted(() => {
           <div class="source">
             Weidian
           </div>
-        </div>
+        </div> -->
         <div class="product-overlay"></div>
       </div>
 
@@ -84,9 +84,9 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="buy-btn inset-0 bg-gradient-to-r from-[#ff3eaa] to-[#008cff] rounded-full" @click.stop="openGoods">
-      <span>Buy Now</span>
-      <i class="icon iconfont icon-tiaozhuan font-13 ml-5"></i>
+    <div style="position: relative;" class="buy-btn inset-0 theme-btn rounded-full" @click.stop="openGoods">
+      <span>Buy on Vigorbuy</span>
+      <i class="icon iconfont icon-tiaozhuan font-13 ml-5 mt-1"></i>
     </div>
   </div>
 </template>
