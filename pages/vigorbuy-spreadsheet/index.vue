@@ -82,6 +82,7 @@ onUnmounted(() => {
 </template>
 <style lang="scss" scoped>
 .spreadsheet-wrapper{
+    overflow-x: hidden;
     .header{
         .home{
             cursor: pointer;

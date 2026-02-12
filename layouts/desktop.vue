@@ -39,6 +39,8 @@ onMounted(() => {
 <style lang="scss" scoped>
     .home-scroll{
         height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
     }
     .home-container {
         .header-layout {

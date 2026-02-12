@@ -1,7 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-    <div class="text-white relative">
+    <div class="text-white relative" style="overflow-x: hidden;">
         <div class="absolute left-2/4 -translate-x-2/4 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
             <div class="text-center max-w-3xl mx-auto">
