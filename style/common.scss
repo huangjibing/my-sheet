@@ -41,10 +41,15 @@
 
 .theme-btn{
   background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
-  // background: linear-gradient(to bottom left, #990000, #FF2D00, #FF7F00, #FFD700);
 }
 .theme-btn-selected{
   background: linear-gradient(to bottom right, rgb(153 0 0 / 0.2), rgb(255 45 0 / 0.2), rgb(255 127 0 / 0.2), rgb(255 215 0 / 0.2));
+}
+.theme-text{
+  background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
+  -webkit-background-clip: text; /* 兼容 Safari/Chrome */
+  background-clip: text;
+  color: transparent; /* 隐藏原文字颜色，露出渐变 */
 }
 body {
   font-family: 'PingFang SC';

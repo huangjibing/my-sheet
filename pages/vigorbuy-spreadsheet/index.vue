@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { MainScrollEventOptions } from '@/types/eventBus';
 import { debounce } from 'lodash-es';
+import JoinDiscordDialog from '@/components/dialog/JoinDiscordDialog.vue';
 const handleScroll = (options: MainScrollEventOptions) => {
     if (options.type != 'homeScroll') {
         return;
@@ -25,12 +26,21 @@ onMounted(() => {
   })
 });
 
+const showDiscord = ref(false);
+const closeDiscord = () => {
+    showDiscord.value = false;
+}
+const showDiscordSet = () => {
+    showDiscord.value = true;
+}
 onUnmounted(() => {
   mainScrollEvent.off(debouncedScroll);
 });
 </script>
 <template>
-    <div class="spreadsheet-wrapper">
+    <JoinDiscordDialog v-if="showDiscord" @onClose="closeDiscord" />
+    <div class="spreadsheet-wrapper relative">
+        <div class="absolute animate-pulse left-1/4 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.45)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
         <div class="header max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 py-8">
             <div class="mb-4 font-14">
                 <span class="home text-gray-500" @click="jumpPath('/')">
@@ -41,7 +51,7 @@ onUnmounted(() => {
                 <span class="ml-5 text-white">Vigorbuy Spreadsheet</span>
             </div>
 
-            <div class="text-3xl sm:text-4xl font-bold mb-3 text-white">
+            <div class="theme-text text-3xl sm:text-4xl font-bold mb-3 heme-btn">
                 <h1>Vigorbuy Spreadsheet</h1>
             </div>
 
@@ -67,7 +77,7 @@ onUnmounted(() => {
             </div>
         </div>
 
-        <SpreadsheetMainProductList />
+        <SpreadsheetMainProductList @shwoDiscord="showDiscordSet" />
     </div>
 </template>
 <style lang="scss" scoped>

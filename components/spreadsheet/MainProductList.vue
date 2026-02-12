@@ -55,6 +55,11 @@ const addUrlParam = () => {
         },
     });
 };
+const emit = defineEmits(['shwoDiscord']);
+
+const shwoDiscord = () => {
+    emit('shwoDiscord');
+}
 </script>
 <template>
     <div class="mainproduct-wrapper">
@@ -66,6 +71,7 @@ const addUrlParam = () => {
             :search="search" :category="category" :currency="currency" class="search" />
             <div class="products-list" v-if="productCurList.length">
                 <ProductItem
+                    @shwoDiscord="shwoDiscord"
                     v-for="item in productCurList"
                     :productInfo="item"
                     :key="item.id"

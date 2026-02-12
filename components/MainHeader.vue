@@ -29,7 +29,7 @@ onMounted(() => {
                 <div class="main-logo" @click="jumpPath('/')">
                     <img width="30" height="30" src="@/assets/logo/icon.webp" alt="">
                     <div class="min-header-text">
-                        <span class="text to-red-700">Vigorbuy Sheet</span>
+                        <span class="text theme-text">Vigorbuy Sheet</span>
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@ onMounted(() => {
                         <span class="name">Guides</span>
                     </div>
 
-                    <div class="buy-btn inset-0 theme-btn rounded-full">
+                    <div class="buy-btn inset-0 theme-btn rounded-full" @click="openVigorbuy()">
                         Get Oopbuy Coupons
                     </div>
                 </div>
@@ -124,12 +124,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 .mainheader{
     height: 64px;
-    // background-color: #fff;
-    /* 核心毛玻璃属性 */
-    // background: rgba(255, 255, 255, 0.7); /* 白色半透明，可改 rgba(0,0,0,0.2) 深色玻璃 */
-    // backdrop-filter: blur(40px); /* 模糊半径，数值越大越模糊（推荐8-15px） */
-    // -webkit-backdrop-filter: blur(40px); /* 兼容 Safari */
-
     box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5); /* 阴影增强 */
     display: flex;
     justify-content: center;
@@ -143,13 +137,6 @@ onMounted(() => {
             margin-left: 5px;
             font-size: 20px;
             font-weight: 900;
-            // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 浅粉 → 深粉，可替换颜色 */
-            background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
-      
-            /* 让渐变仅显示在文字区域 */
-            -webkit-background-clip: text; /* 兼容 Safari/Chrome */
-            background-clip: text;
-            color: transparent; /* 隐藏原文字颜色，露出渐变 */
         }
         img{
             transition: transform 0.3s ease;

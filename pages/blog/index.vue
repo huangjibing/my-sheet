@@ -61,7 +61,8 @@ const gridsList = computed<GirdsItem[]>(() => {
 })
 </script>
 <template>
-    <div class="blog-wrapper max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+    <div class="blog-wrapper relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <div class="absolute left-2/4 -translate-x-2/4 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
         <div class="mb-4 font-14">
             <span class="home text-gray-500 pointer" @click="jumpPath('/')">
                 <i class="icon iconfont icon-shouye"></i>

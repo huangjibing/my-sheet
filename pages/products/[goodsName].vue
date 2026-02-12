@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useBaseStore } from '~/store/base';
+import JoinDiscordDialog from '@/components/dialog/JoinDiscordDialog.vue';
 const route = useRoute();
 const router = useRouter();
 const goodsName = route.params.goodsName.toString();
@@ -60,10 +61,17 @@ onMounted(() => {
 const coverImg = computed(() => {
   return coverList.value[coverIndex.value]
 });
-
+const showDiscord = ref(false);
+const closeDiscord = () => {
+    showDiscord.value = false;
+}
+const showDiscordSet = () => {
+    showDiscord.value = true;
+}
 </script>
 
 <template>
+  <JoinDiscordDialog v-if="showDiscord" @onClose="closeDiscord" />
   <div class="product-detail-wrapper max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 pt-8">
     <template v-if="productInfo">
       <div>
@@ -170,7 +178,11 @@ const coverImg = computed(() => {
               <span class="ml-10 bold-500 font-18">Buy Now on VigorBuy</span>
             </div>
 
-            <div class="info-detail-card border border-white/10 bg-white/5">
+            <div class="transition hover:scale-105 rounded-[8px] text-center mt-5 pt-4 pb-4 border border-[#353535] bg-white/5 text-white pointer" @click="showDiscordSet">
+              <span>Join discord for more discounts</span>
+            </div>
+
+            <div class="info-detail-card border border-white/10 bg-white/5 mb-5">
               <div class="mb-7">
                 <i class="icon iconfont icon-tishi font-16 bold-500 text-ff186b"></i>
                 <span class="ml-5 bold-500 font-16 text-white">Product Details</span>

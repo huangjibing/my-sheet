@@ -44,19 +44,6 @@
         initData();
       }, 1500) 
     }
-
-
-    // const result = await queryDataFromDB("productDB", "products");
-    // if (result && result.length > 0) {
-    //   baseStore.setProductAll(result);
-    //   setTimeout(() => {
-    //     loading.value = false;
-    //   }, 500)
-    //   localStorage.setItem('version', version.value);
-    //   return;
-    // } else {
-
-    // }
   }
 
   onMounted(async () => {

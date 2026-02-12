@@ -37,6 +37,11 @@ onMounted(() => {
     localStorage.getItem("inviteCode") ||
     "bkwNqLO7";
 })
+const emit = defineEmits(['shwoDiscord']);
+
+const shwoDiscord = () => {
+    emit('shwoDiscord');
+}
 </script>
 
 <template>
@@ -84,10 +89,15 @@ onMounted(() => {
       </div>
     </div>
 
-    <div style="position: relative;" class="buy-btn inset-0 theme-btn rounded-full" @click.stop="openGoods">
+    <div class="buy-btn pt-2 pb-2 inset-0 theme-btn rounded-full" @click.stop="openGoods">
       <span>Buy on Vigorbuy</span>
       <i class="icon iconfont icon-tiaozhuan font-13 ml-5 mt-1"></i>
     </div>
+
+    <div class="buy-btn pt-2 pb-2 border border-[#353535]" @click.stop="shwoDiscord">
+      <span>Join discord for more discounts</span>
+    </div>
+
   </div>
 </template>
 
@@ -229,7 +239,6 @@ onMounted(() => {
   }
   .buy-btn{
     border-radius: 8px;
-    // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #C40003 100%); /* 粉到红渐变 */
     font-size: 14px;
     font-weight: 700;
     color: #fff;
@@ -237,7 +246,6 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
     margin: 10px 15px;
-    height: 40px;
     transition: transform 0.3s ease;
     &:hover{
       transform: scale(1.05); /* 轻微放大 */
@@ -273,7 +281,6 @@ onMounted(() => {
       text-align: center;
       margin: 10px;
       margin-top: 5px;
-      height: 30px;
     }
   }
 }

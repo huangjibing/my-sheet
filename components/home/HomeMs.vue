@@ -1,10 +1,25 @@
 <script setup lang="ts">
-
+const route = useRoute();
+const inviteCode = ref("");
+const openVigorbuy = () => {
+  if (inviteCode.value) {
+    openLink(`https://vigorbuy.com/?inviteCode=${inviteCode.value}&utm_source=vigorbuysheet`)
+  } else {
+    openLink(`https://vigorbuy.com/?utm_source=vigorbuysheet`)
+  }
+}
+onMounted(() => {
+  inviteCode.value =
+    route.query.inviteCode?.toString() ||
+    localStorage.getItem("inviteCode") ||
+    "bkwNqLO7";
+});
 </script>
 <template>
     <div class="homems-wrapper px-4 sm:!px-6 lg:!px-8 py-16 sm:!py-20 lg:!py-28">
+        <div class="glow-box w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
         <div class="homems-content max-w-7xl">
-            <span class="title text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl mb-2">Vigorbuy Sheet</span>
+            <span class="theme-text font-[900] text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl mb-2">Vigorbuy Sheet</span>
             <span class="subtitle text-2xl sm:!text-3xl md:!text-4xl mb-2">The Complete Vigorbuy Spreadsheet</span>
 
             <div class="describe max-w-3xl mx-auto">
@@ -18,9 +33,9 @@
                     <i class="icon iconfont icon-youjiantou ml-8"></i>
                 </div>
 
-                <div class="the-lw text-white inset-0 theme-btn rounded-full">
-                    <i class="icon iconfont icon-liwuhuodong"></i>
-                    <span class="ml-5">Get Vigorbuy Coupons</span>
+                <div class="the-lw text-white inset-0 theme-btn rounded-full" @click="openVigorbuy()">
+                    <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-5.5"></i>
+                    <span class="ml-2">Get Vigorbuy Coupons</span>
                 </div>
             </div>
 
@@ -77,21 +92,17 @@
         display: flex;
         justify-content: center;
         overflow: hidden;
+        position: relative;
+        .glow-box {
+            position: absolute;
+        }
+
         .homems-content{
+            z-index: 1;
             text-align: center;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            .title{
-                // font-size: 65px;
-                font-weight: 900;
-                // background: linear-gradient(to right, rgb(255, 24, 107) 0%, #E80075 50%, #8328F9 100%);
-                background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
-                -webkit-background-clip: text; /* 兼容 Safari/Chrome */
-                background-clip: text;
-                color: transparent; /* 隐藏原文字颜色，露出渐变 */
-                font-weight: 900;
-            }
             .subtitle{
                 color: #334153;
                 font-weight: 800;
