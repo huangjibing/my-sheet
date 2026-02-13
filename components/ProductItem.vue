@@ -91,7 +91,7 @@ const shwoDiscord = () => {
 
     <div class="buy-btn pt-2 pb-2 inset-0 theme-btn rounded-full" @click.stop="openGoods">
       <span>Buy on Vigorbuy</span>
-      <i class="icon iconfont icon-tiaozhuan font-13 ml-5 mt-1"></i>
+      <!-- <i class="icon iconfont icon-tiaozhuan font-13 ml-5 mt-1"></i> -->
     </div>
 
     <div class="buy-btn pt-2 pb-2 pl-1 pr-1 border border-[#353535]" @click.stop="shwoDiscord">
