@@ -63,12 +63,12 @@ const gridsList = computed<GirdsItem[]>(() => {
 <template>
     <div style="overflow-x: hidden;" class="blog-wrapper relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         <div class="absolute left-2/4 -translate-x-2/4 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
-        <div class="mb-4 font-14">
-            <span class="home text-gray-500 pointer" @click="jumpPath('/')">
+        <div class="mb-4 text-[14px]">
+            <span class="home hover:text-[#FF186B] text-gray-500 pointer" @click="jumpPath('/')">
                 <i class="icon iconfont icon-shouye"></i>
                 <span class="ml-3">Home</span>
             </span>
-            <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
+            <i class="icon iconfont icon-xiangyoujiantou ml-5 !text-[12px] text-gray-500"></i>
             <span class="ml-5 text-white">Guides</span>
         </div>
         <div class="animate-fade-in-down blog-header flex mb-4">
@@ -126,7 +126,7 @@ const gridsList = computed<GirdsItem[]>(() => {
             </div>
         </div>
 
-        <BrowseTheSpreadsheet />
+        <BrowseTheSpreadsheet class="mb-4" />
     </div>
 </template>
 <style lang="scss" scoped>

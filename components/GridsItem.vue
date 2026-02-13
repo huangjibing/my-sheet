@@ -7,7 +7,7 @@ const props = defineProps<Props>();
 
 </script>
 <template>
-    <div class="grids-item border border-white/10 bg-white/5" @click="jumpPath(grids.page)">
+    <div class="grids-item pointer rounded-[12px] overflow-hidden flex flex-col justify-between sm:hover:-translate-y-[6px] border border-white/10 bg-white/5" @click="jumpPath(grids.page)">
         <div class="grids-img-wrapper">
             <el-image fit="cover" class="grids-img" loading="lazy" :src="grids.image" />
         </div>
@@ -28,24 +28,17 @@ const props = defineProps<Props>();
                 {{ grids.content }}
             </p>
 
-            <div class="more text-[#FF186B] bold-700">
+            <div class="more flex items-center gap-[2px] text-[#FF186B] bold-700">
                 <span>Read More</span>
-                <i class="ml-5 font-13 icon iconfont icon-youjiantou"></i>
+                <i class="mt-1 ml-5 font-13 icon iconfont icon-youjiantou"></i>
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
 .grids-item{
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
     transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     &:hover{
-        transform: translateY(-4px);
         .grids-img{
           transform: scale(1.1); /* 轻微放大 */
         }
@@ -59,12 +52,8 @@ const props = defineProps<Props>();
         }
     }
     .more{
-        display: flex;
-        align-items: center;
-        gap: 2px;
         .icon{
             transition: transform 0.3s ease;
-            margin-top: 5px;
         }
     }
     .grids-img-wrapper {

@@ -30,33 +30,33 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
       title: "Vigorbuysheet",
       link: [
-        {
-          rel: 'canonical',
-          href: 'https://vigorbuysheet.com/'
-        },
-        {
+         {
           rel: 'icon',
           sizes: '32x32',
           type: 'ico',
-          href: '/favicon.png',
+          href: 'https://cdn.static.vigorbuy.com/assets/favicon/favicon_32.ico',
         },
         {
           rel: 'icon',
           sizes: '16x16',
           type: 'ico',
-          href: '/favicon.png',
+          href: 'https://cdn.static.vigorbuy.com/assets/favicon/favicon_16.ico',
         },
         {
           rel: 'icon',
           sizes: '48x48',
           type: 'ico',
-          href: '/favicon.png',
+          href: 'https://cdn.static.vigorbuy.com/assets/favicon/favicon_48.ico',
         },
         {
           rel: 'icon',
           sizes: '64x64',
           type: 'ico',
-          href: '/favicon.png',
+          href: 'https://cdn.static.vigorbuy.com/assets/favicon/favicon_64.ico',
+        },
+        {
+          rel: 'canonical',
+          href: 'https://vigorbuy.com/'
         }
       ],
       meta: [

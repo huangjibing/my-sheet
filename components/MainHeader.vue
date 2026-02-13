@@ -23,56 +23,52 @@ onMounted(() => {
 </script>
 <template>
     <div>
-        <div class="mainheader bg-[#121212]">
+        <div class="mainheader h-[64px] bg-[#121212] flex justify-center items-center">
         <el-col :xs="23" :sm="23" :md="23" :lg="23" :xl="23">
             <div class="flex justify-between">
-                <div class="main-logo" @click="jumpPath('/')">
-                    <img width="30" height="30" src="@/assets/logo/icon.webp" alt="">
+                <div class="main-logo flex h-[40px] items-center pointer" @click="jumpPath('/')">
+                    <img width="30" height="30" src="@/assets/logo/logo.png" alt="">
                     <div class="min-header-text">
-                        <span class="text theme-text">Vigorbuy Sheet</span>
+                        <span class="ml-[5px] text-[20px] font-[900] theme-text">VIGORBUY</span>
                     </div>
                 </div>
 
-                <div class="main-pages hidden-xs-only">
-                    <div class="item relative text-gray-400 hover:text-white"
+                <div class="flex gap-[10px] hidden-xs-only">
+                    <div class="flex gap-[6px] h-[40px] items-center pl-[20px] pr-[20px] rounded-[8px] pointer relative text-gray-400 hover:text-white"
                     @click="jumpPage('/')"
                     :class="{'text-white': $route.name?.toString().endsWith('index')}">
                         <span v-if="$route.name?.toString().endsWith('index')" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
-                        <!-- <i class="icon iconfont icon-shouye"></i> -->
-                        <span class="name relative z-10">Home</span>
+                        <span class="text-[14px] font-[600] leading-[40px] relative z-10">Home</span>
                     </div>
 
-                    <div class="item relative text-gray-400 hover:text-white"
+                    <div class="flex gap-[6px] h-[40px] items-center pl-[20px] pr-[20px] rounded-[8px] pointer relative text-gray-400 hover:text-white"
                     @click="jumpPage('/vigorbuy-spreadsheet')"
                     :class="{'text-white': $route.name === 'vigorbuy-spreadsheet'}"
                     >
                         <span v-if="$route.name === 'vigorbuy-spreadsheet'" class="absolute inset-0 bg-gradient-to-r from-[#DAA520]/20 to-[#FF0000]/20 rounded-full border border-[#ff0033]/40"></span>
-                        <!-- <i class="icon iconfont icon-biaoge"></i> -->
-                        <span class="name relative z-10">Spreadsheet</span>
+                        <span class="text-[14px] font-[600] leading-[40px] relative z-10">Spreadsheet</span>
                     </div>
                     
-                    <div class="item relative text-gray-400 hover:text-white"
+                    <div class="flex gap-[6px] h-[40px] items-center pl-[20px] pr-[20px] rounded-[8px] pointer relative text-gray-400 hover:text-white"
                     @click="jumpPage('/qc-pictures')"
                     :class="{'text-white': $route.name === 'qc-pictures'}"
                     >
                         <span v-if="$route.name === 'qc-pictures'" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
-                        <!-- <i class="icon iconfont icon-xiangji_o"></i> -->
-                        <span class="name relative z-10">QC Pictures</span>
+                        <span class="text-[14px] font-[600] leading-[40px] relative z-10">QC Pictures</span>
                     </div>
 
-                    <div class="item relative text-gray-400 hover:text-white"
+                    <div class="flex gap-[6px] h-[40px] items-center pl-[20px] pr-[20px] rounded-[8px] pointer relative text-gray-400 hover:text-white"
                     @click="jumpPage('/blog')"
                     :class="{'text-white': $route.name === 'blog'}"
                     >
                         <span v-if="$route.name === 'blog'" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
-                        <!-- <i class="icon iconfont icon-shu"></i> -->
-                        <span class="name relative z-10">Guides</span>
+                        <span class="text-[14px] font-[600] leading-[40px] relative z-10">Guides</span>
                     </div>
                 </div>
 
-                <div class="coupons-btn text-white inset-0 theme-btn rounded-full" @click="openVigorbuy()">
-                    <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5"></i>
-                    <span>Get Vigorbuy Coupons</span>
+                <div class="coupons-btn text-white theme-btn h-[40px] leading-[40px] rounded-[8px] flex gap-[5px] justify-center text-[17px] pointer" @click="openLink('https://discord.com/invite/nmRxUPDK9m')">
+                    <!-- <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5 !text-[12px]"></i> -->
+                    <span>Join the Discord</span>
                 </div>
 
                 <div class="main-menu text-white" @click="isShowMenu = !isShowMenu">
@@ -113,8 +109,8 @@ onMounted(() => {
                         <span class="name">Guides</span>
                     </div>
 
-                    <div class="buy-btn inset-0 theme-btn rounded-full" @click="openVigorbuy()">
-                        Get Oopbuy Coupons
+                    <div class="buy-btn inset-0 theme-btn rounded-full" @click="openLink('https://discord.com/invite/nmRxUPDK9m')">
+                        Join the Discord
                     </div>
                 </div>
             </el-col>
@@ -123,21 +119,7 @@ onMounted(() => {
 </template>
 <style lang="scss" scoped>
 .mainheader{
-    height: 64px;
-    box-shadow: 0 0px 2px rgba(0, 0, 0, 0.5); /* 阴影增强 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     .main-logo{
-        display: flex;
-        height: 40px;
-        align-items: center;
-        cursor: pointer;
-        .text{
-            margin-left: 5px;
-            font-size: 20px;
-            font-weight: 900;
-        }
         img{
             transition: transform 0.3s ease;
         }
@@ -147,48 +129,9 @@ onMounted(() => {
             }
         }
     }
-    .main-pages{
-        display: flex;
-        gap: 10px;
-        .item{
-            display: flex;
-            gap: 6px;
-            height: 40px;
-            align-items: center;
-            padding: 0px 20px;
-            border-radius: 8px;
-            // color: #666;
-            cursor: pointer;
-            .icon{
-                font-size: 16px;
-                font-weight: 900;
-            }
-            .name{
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 40px;
-            }
-            &:hover{
-                // background-color: rgba(226, 222, 222, 0.4);
-                // color: #fff;
-            }
-        }
-    }
     .coupons-btn{
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
-        // background-color: #ff186b;
-        border-radius: 8px;
-        height: 40px;
-        width: 207px;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 14px;
+        width: 182px;
         .icon{
-            font-size: 11px;
-            margin-right: 5px;
         }
     }
     .main-menu{

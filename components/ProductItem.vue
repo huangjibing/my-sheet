@@ -46,7 +46,7 @@ const shwoDiscord = () => {
 
 <template>
   <div
-    class="product-item border border-white/10 bg-white/5"
+    class="product-item border border-white/10 bg-white/5 sm:hover:-translate-y-[6px]"
     @click="handleGoProductDetail(productInfo.id)"
   >
     <div>
@@ -63,16 +63,16 @@ const shwoDiscord = () => {
             Weidian
           </div>
         </div> -->
-        <div class="product-overlay"></div>
+        <!-- <div class="product-overlay"></div> -->
       </div>
 
       <div class="product-info">
         <div class="info-text">
-          <h3 class="text-white wrap-line-2">{{ productInfo.goodsTitle }}</h3>
-          <p class="text-gray-600 font-13 mt-3">No description available</p>
-          <p class="text-gray-600 font-13 mt-3">
+          <h3 class="text-sm sm:text-base lg:text-lg font-bold text-white mb-1 sm:mb-2 line-clamp-2 group-hover:text-[#FF186B] transition-colors">{{ productInfo.goodsTitle }}</h3>
+          <p class="text-gray-500 font-13 mt-3">No description available</p>
+          <p class="text-gray-500 font-13 mt-3">
             <i class="icon iconfont icon-fangxunrenyuan"></i>
-            <span class="ml-3">manyouyisi</span>
+            <span class="ml-3">Tom and Jerry</span>
           </p>
         </div>
       </div>
@@ -80,7 +80,7 @@ const shwoDiscord = () => {
       <div class="product-price">
         <p class="text-gray-500 font-13">Price</p>
         <div class="mt-5">
-          <span class="discountedPrice">
+          <span class="discountedPrice text-white">
             <span class="symbol">$</span>
             <span class="">{{priceArr(productInfo.discountedPrice + '')[0] }}</span>
             <span class="decimal" v-show="priceArr(productInfo.discountedPrice + '')[1]">.{{priceArr(productInfo.discountedPrice + '')[1] }}</span>
@@ -226,7 +226,6 @@ const shwoDiscord = () => {
     }
     .discountedPrice{
       font-size: 24px;
-      color: #FF0039;
       margin-left: 3px;
       font-family: "PuHuiTiBold";
       .symbol{

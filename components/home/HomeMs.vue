@@ -16,160 +16,71 @@ onMounted(() => {
 });
 </script>
 <template>
-    <div class="homems-wrapper px-4 sm:!px-6 lg:!px-8 py-16 sm:!py-20 lg:!py-28">
-        <div class="glow-box w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
-        <div class="homems-content max-w-7xl">
-            <span class="theme-text font-[900] text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl mb-2">Vigorbuy Sheet</span>
-            <span class="subtitle text-2xl sm:!text-3xl md:!text-4xl mb-2">The Complete Vigorbuy Spreadsheet</span>
+    <div class="homems-wrapper overflow-hidden flex justify-center relative px-4 sm:!px-6 lg:!px-8 py-16 sm:!py-20 lg:!py-28">
+        <div class="absolute w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.15)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
+        <div class="homems-content z-[1] text-center flex overflow-hidden max-w-7xl">
+            <span class="theme-text font-[900] text-4xl sm:!text-5xl md:!text-6xl lg:!text-7xl mb-4">Vigorbuy Sheet</span>
+            <span class="text-gray-300 font-[800] text-2xl sm:!text-3xl md:!text-4xl mb-2">The Complete Vigorbuy Spreadsheet</span>
 
-            <div class="describe max-w-3xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto">
                 <p class="mt-30 text-gray-400 text-lg sm:!text-xl">Find verified products from Taobao, 1688, and Weidian in one searchable database. Built for buyers who want to skip the guesswork and shop with confidence.</p>
                 <p class="mt-10 text-gray-500">Over 10,000 products with QC photos, working links, and real pricing. Updated daily. Free to use.</p>
             </div>
 
-            <div class="homems-btn">
-                <div class="the-admin theme-btn" @click="jumpPath('/vigorbuy-spreadsheet')">
+            <div class="homems-btn flex gap-[20px] h-[68px] items-center mt-[30px] justify-center">
+                <div class="the-admin theme-btn h-[68px] flex items-center text-white justify-center pointer rounded-[40px]" @click="jumpPath('/vigorbuy-spreadsheet')">
                     <span>Browse the Vigorbuy Spreadsheet</span>
                     <i class="icon iconfont icon-youjiantou ml-8"></i>
                 </div>
 
-                <div class="the-lw text-white inset-0 theme-btn rounded-full" @click="openVigorbuy()">
+                <div class="the-lw pointer text-white theme-btn h-[60px] flex items-center justify-center rounded-[40px]" @click="openVigorbuy()">
                     <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-5.5"></i>
                     <span class="ml-2">Get Vigorbuy Coupons</span>
                 </div>
             </div>
 
-            <div class="homems-assure">
-                <div class="item bg-products">
-                    <i class="icon iconfont icon-xuanzhong icon-color-products"></i>
-                    <span class="name">100,000+ Products</span>
+            <div class="homems-assure flex gap-[20px] justify-center mt-[40px] flex-wrap">
+                <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#F0FDF4]">
+                    <i class="icon iconfont icon-xuanzhong text-[#00C753]"></i>
+                    <span class="text-[#475565] text-[14px] font-[600]">100,000+ Products</span>
                 </div>
 
-                <div class="item bg-photos">
-                    <i class="icon iconfont icon-xuanzhong icon-color-photos"></i>
-                    <span class="name">QC Photos</span>
+                <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#EEF6FF]">
+                    <i class="icon iconfont icon-xuanzhong text-[#0083FF]"></i>
+                    <span class="text-[#475565] text-[14px] font-[600]">QC Photos</span>
                 </div>
 
-                <div class="item bg-daily">
-                    <i class="icon iconfont icon-xuanzhong icon-color-daily"></i>
-                    <span class="name">Updated Daily</span>
+                <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#F9F5FF]">
+                    <i class="icon iconfont icon-xuanzhong text-[#9B4FFF]"></i>
+                    <span class="text-[#475565] text-[14px] font-[600]">Updated Daily</span>
                 </div>
 
-                <div class="item bg-use">
-                    <i class="icon iconfont icon-xuanzhong icon-color-use"></i>
-                    <span class="name">Free to Use</span>
+                <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#FFF7ED]">
+                    <i class="icon iconfont icon-xuanzhong text-[#FF6800]"></i>
+                    <span class="text-[#475565] text-[14px] font-[600]">Free to Use</span>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <style lang="scss" scoped>
-    .bg-products{
-        background-color: #F0FDF4;
-    }
-    .icon-color-products{
-        color: #00C753;
-    }
-    .bg-photos{
-        background-color: #EEF6FF;
-    }
-    .icon-color-photos{
-        color: #0083FF;
-    }
-    .bg-daily{
-        background-color: #F9F5FF;
-    }
-    .icon-color-daily{
-        color: #9B4FFF;
-    }
-    .bg-use{
-        background-color: #FFF7ED;
-    }
-    .icon-color-use{
-        color: #FF6800;
-    }
     .homems-wrapper{
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-        .glow-box {
-            position: absolute;
-        }
-
         .homems-content{
-            z-index: 1;
-            text-align: center;
-            display: flex;
             flex-direction: column;
-            overflow: hidden;
-            .subtitle{
-                color: #334153;
-                font-weight: 800;
-                margin-top: 5px;
-            }
-            .describe{
-                text-align: center;
-            }
             .homems-btn{
-                display: flex;
-                gap: 20px;
-                height: 68px;
-                align-items: center;
-                margin-top: 30px;
-                justify-content: center;
                 .the-admin{
-                    // background-color: rgb(255, 24, 107);
-                    height: 68px;
-                    display: flex;
-                    align-items: center;
-                    color: #fff;
                     width: 391px;
-                    border-radius: 40px;
-                    justify-content: center;
-                    cursor: pointer;
                     .icon{
                         transition: transform 0.3s ease;
                     }
                     &:hover{
-                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
                         .icon{
                             transform: translateX(8px)
                         }
                     }
                 }
                 .the-lw{
-                    height: 60px;
                     width: 261px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    // border: 2px solid #E5E7EB;
-                    border-radius: 40px;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: rgba(0, 0, 0, 0.02);
-                    }
-                }
-            }
-            .homems-assure{
-                display: flex;
-                gap: 20px;
-                justify-content: center;
-                margin-top: 40px;
-                flex-wrap: wrap;
-                .item{
-                    height: 32px;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    border-radius: 20px;
-                    padding: 0px 15px;
-                    .name{
-                        color: #475565;
-                        font-size: 14px;
-                        font-weight: 600;
-                    }
                 }
             }
         }

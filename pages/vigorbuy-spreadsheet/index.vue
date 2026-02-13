@@ -39,15 +39,15 @@ onUnmounted(() => {
 </script>
 <template>
     <JoinDiscordDialog v-if="showDiscord" @onClose="closeDiscord" />
-    <div class="spreadsheet-wrapper relative">
+    <div class="relative overflow-x-hidden">
         <div class="absolute animate-pulse left-1/4 w-[600px] h-[300px] bg-[radial-gradient(circle,rgba(255,45,0,0.45)_0%,rgba(255,127,0,0.08)_40%,transparent_70%)] blur-2xl"></div>
         <div class="header max-w-7xl mx-auto px-4 sm:!px-6 lg:!px-8 py-8">
-            <div class="mb-4 font-14">
-                <span class="home text-gray-500" @click="jumpPath('/')">
+            <div class="mb-4 !text-[14px]">
+                <span class="text-gray-500 pointer hover:text-[#FF186B]" @click="jumpPath('/')">
                     <i class="icon iconfont icon-shouye"></i>
                     <span class="ml-3">Home</span>
                 </span>
-                <i class="icon iconfont icon-xiangyoujiantou ml-5 font-12 text-gray-500"></i>
+                <i class="icon iconfont icon-xiangyoujiantou ml-5 !text-[12px] text-gray-500"></i>
                 <span class="ml-5 text-white">Vigorbuy Spreadsheet</span>
             </div>
 
@@ -59,19 +59,19 @@ onUnmounted(() => {
                 Browse 8,407+ verified products from Taobao, 1688, and Weidian. Links verified weekly, updated daily.
             </p>
             
-            <div class="header-flooter mt-6">
+            <div class="header-flooter mt-6 flex gap-[10px] font-[14px] text-[#687282] flex-wrap">
                 <div>
-                    <i class="icon iconfont icon-weisa text-green-500"></i>
+                    <i class="font-[12px] icon iconfont icon-weisa text-green-500"></i>
                     <span class="ml-8">Weekly link verification</span>
                 </div>
 
                 <div>
-                    <i class="icon iconfont icon-weisa text-green-500"></i>
+                    <i class="font-[12px] icon iconfont icon-weisa text-green-500"></i>
                     <span class="ml-8">Seller history checked</span>
                 </div>
 
                 <div>
-                    <i class="icon iconfont icon-weisa text-green-500"></i>
+                    <i class="font-[12px] icon iconfont icon-weisa text-green-500"></i>
                     <span class="ml-8">Dead links removed daily</span>
                 </div>
             </div>
@@ -81,25 +81,4 @@ onUnmounted(() => {
     </div>
 </template>
 <style lang="scss" scoped>
-.spreadsheet-wrapper{
-    overflow-x: hidden;
-    .header{
-        .home{
-            cursor: pointer;
-            &:hover{
-                color: #FF186B;
-            }
-        }
-        .header-flooter{
-            display: flex;
-            gap: 10px;
-            font-size: 14px;
-            color: #687282;
-            flex-wrap: wrap;
-            .icon{
-                font-size: 12px;
-            }
-        }
-    }
-}
 </style>
