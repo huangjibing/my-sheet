@@ -51,8 +51,8 @@ onUnmounted(() => {
                 <span class="ml-5 text-white">Vigorbuy Spreadsheet</span>
             </div>
 
-            <div class="theme-text text-3xl sm:text-4xl font-bold mb-3 heme-btn">
-                <h1>Vigorbuy Spreadsheet</h1>
+            <div class="text-3xl sm:text-4xl font-bold mb-3 heme-btn">
+                <span class="theme-text">Vigorbuy Spreadsheet</span>
             </div>
 
             <p class="text-lg text-slate-400 max-w-3xl">
