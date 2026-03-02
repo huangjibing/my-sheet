@@ -255,7 +255,7 @@ const shwoDiscord = () => {
 @media screen and (max-width: 768px) {
   .product-item{
     .product-img-wrapper {
-      padding-bottom: 160px;
+      padding-bottom: 200px;
     }
     .product-price{
       .price{

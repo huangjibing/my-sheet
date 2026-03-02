@@ -111,13 +111,13 @@ const shwoDiscord = () => {
 @media (max-width: 1200px) {
     .products-list{
         grid-template-columns: repeat(4, 1fr) !important;
-        gap: 10px !important;
+        gap: 30px !important;
     }
 }
 @media (max-width: 992px) {
     .products-list{
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 10px !important;
+        gap: 20px !important;
     }
 }
 @media (max-width: 767px) {
