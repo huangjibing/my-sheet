@@ -67,7 +67,7 @@ onMounted(() => {
                 </div>
 
                 <div class="coupons-btn text-white theme-btn h-[40px] leading-[40px] rounded-[8px] flex gap-[5px] justify-center text-[17px] pointer" @click="openLink('https://discord.com/invite/nmRxUPDK9m')">
-                    <!-- <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5 !text-[12px]"></i> -->
+                    <i class="icon iconfont icon-liwuhuodong animate-bounce w-3.5 h-3.5 !text-[12px]"></i>
                     <span>Join the Discord</span>
                 </div>
 

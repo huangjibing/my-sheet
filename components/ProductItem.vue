@@ -69,17 +69,17 @@ const shwoDiscord = () => {
       <div class="product-info">
         <div class="info-text">
           <h3 class="text-sm sm:text-base lg:text-lg font-bold text-white mb-1 sm:mb-2 line-clamp-2 group-hover:text-[#FF186B] transition-colors">{{ productInfo.goodsTitle }}</h3>
-          <p class="text-gray-500 font-13 mt-3">No description available</p>
+          <!-- <p class="text-gray-500 font-13 mt-3">No description available</p>
           <p class="text-gray-500 font-13 mt-3">
             <i class="icon iconfont icon-fangxunrenyuan"></i>
             <span class="ml-3">Tom and Jerry</span>
-          </p>
+          </p> -->
         </div>
       </div>
 
       <div class="product-price">
-        <p class="text-gray-500 font-13">Price</p>
-        <div class="mt-5">
+        <!-- <p class="text-gray-500 font-13">Price</p> -->
+        <div class="">
           <span class="discountedPrice text-white">
             <span class="symbol">$</span>
             <span class="">{{priceArr(productInfo.discountedPrice + '')[0] }}</span>
@@ -131,7 +131,7 @@ const shwoDiscord = () => {
   }
   .product-img-wrapper {
     max-width: min(100%, 100%);
-    padding-bottom: 236px;
+    padding-bottom: 256px;
     position: relative;
     margin: auto;
     overflow: hidden;
@@ -212,11 +212,11 @@ const shwoDiscord = () => {
     margin-right: 15px;
     .info-text{
       border-bottom: 1px solid rgba(23, 23, 23, 0.05);
-      padding-bottom: 15px;
+      // padding-bottom: 15px;
     }
   }
   .product-price{
-    padding: 10px 15px;
+    padding: 0px 15px;
     font-size: 18px;
     padding-bottom: 10px;
     .price{

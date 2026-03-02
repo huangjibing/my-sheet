@@ -104,7 +104,7 @@ const shwoDiscord = () => {
         .products-list {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
+            gap: 30px;
         }
     }
 }
