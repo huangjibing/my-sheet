@@ -45,7 +45,7 @@ onMounted(() => {
                     @click="jumpPage('/vigorbuy-spreadsheet')"
                     :class="{'text-white': $route.name === 'vigorbuy-spreadsheet'}"
                     >
-                        <span v-if="$route.name === 'vigorbuy-spreadsheet'" class="absolute inset-0 bg-gradient-to-r from-[#DAA520]/20 to-[#FF0000]/20 rounded-full border border-[#ff0033]/40"></span>
+                        <span v-if="$route.name === 'vigorbuy-spreadsheet'" class="absolute inset-0 theme-btn-selected rounded-full border border-[#ff0033]/40"></span>
                         <span class="text-[14px] font-[600] leading-[40px] relative z-10">Spreadsheet</span>
                     </div>
                     

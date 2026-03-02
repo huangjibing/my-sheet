@@ -40,13 +40,17 @@
 }
 
 .theme-btn{
-  background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
+  // background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
+  background: linear-gradient(90deg, #f85867 0%, #d13ce9 50.5%, #4b83f8 100%);
 }
 .theme-btn-selected{
-  background: linear-gradient(to bottom right, rgb(153 0 0 / 0.2), rgb(255 45 0 / 0.2), rgb(255 127 0 / 0.2), rgb(255 215 0 / 0.2));
+  // background: linear-gradient(to bottom right, rgb(153 0 0 / 0.2), rgb(255 45 0 / 0.2), rgb(255 127 0 / 0.2), rgb(255 215 0 / 0.2));
+  // background: linear-gradient(to bottom right, rgba(156, 28, 28, 0.2), rgba(33, 44, 148, 0.2), rgba(32, 22, 170, 0.2), rgba(107, 109, 199, 0.2));
+  background: linear-gradient(180deg, #34363d, #21242a, #434750);
 }
 .theme-text{
-  background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
+  // background: linear-gradient(to bottom right, #990000, #FF2D00, #FF7F00, #FFD700);
+  background: linear-gradient(90deg, #f85867 0%, #d13ce9 50.5%, #4b83f8 100%);
   -webkit-background-clip: text; /* 兼容 Safari/Chrome */
   background-clip: text;
   color: transparent; /* 隐藏原文字颜色，露出渐变 */

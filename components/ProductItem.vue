@@ -46,7 +46,7 @@ const shwoDiscord = () => {
 
 <template>
   <div
-    class="product-item border border-white/10 bg-white/5 sm:hover:-translate-y-[6px]"
+    class="product-item border border-white/10 bg-[#2a2a2a] sm:hover:-translate-y-[6px]"
     @click="handleGoProductDetail(productInfo.id)"
   >
     <div>
@@ -95,7 +95,7 @@ const shwoDiscord = () => {
         <!-- <i class="icon iconfont icon-tiaozhuan font-13 ml-5 mt-1"></i> -->
       </div>
 
-      <div class="buy-btn pt-2 pb-2 pl-1 pr-1 border border-[#353535]" @click.stop="shwoDiscord">
+      <div class="buy-btn pt-2 pb-2 pl-1 pr-1 bg-[#232323] border border-[#353535]" @click.stop="shwoDiscord">
         <span>Join discord for more discounts</span>
       </div>
     </div>
