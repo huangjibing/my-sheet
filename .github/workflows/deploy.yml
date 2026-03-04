@@ -31,14 +31,14 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+
       # 删除多余镜像只保留最新前五镜像
       - name: Cleanup old Docker images
         if: always()
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
-          IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/newvigorbuysheet
+          IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app
           KEEP_LAST: 5
         run: |
           sudo apt-get update && sudo apt-get install -y jq
