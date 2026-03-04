@@ -31,15 +31,6 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      # 可选：清理Docker Hub旧镜像
-      - name: Cleanup old images
-        uses: devops-infra/action-docker-cleanup@v0.5
-        with:
-          docker_username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          docker_token: ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker_image: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
-          keep_last: 5  # 保留最新的5个镜像
-          keep_tags: "latest"  # 保留latest标签
 
       # 5. 部署到宝塔服务器（替换容器镜像，用docker run创建容器）
       - name: Deploy to 宝塔服务器
