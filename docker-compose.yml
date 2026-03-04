@@ -14,7 +14,7 @@ services:
       timeout: 5s
       retries: 3
     networks:
-      - nuxt-network
+      - nuxt-network-new
 
 networks:
   nuxt-network:

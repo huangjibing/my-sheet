@@ -47,7 +47,7 @@ jobs:
             
             # 第二步：定义容器名和网络（和原docker-compose配置一致）
             CONTAINER_NAME="vigorbuysheet-docker"
-            NETWORK_NAME="nuxt-network"
+            NETWORK_NAME="nuxt-network-new"
             
             # 第三步：检查自定义网络是否存在，不存在则创建（和原配置的nuxt-network一致）
             if ! docker network ls --format "{{.Name}}" | grep -q "$NETWORK_NAME"; then
