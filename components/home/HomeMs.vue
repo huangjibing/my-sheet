@@ -42,7 +42,7 @@ onMounted(() => {
             <div class="homems-assure flex gap-[20px] justify-center mt-[40px] flex-wrap">
                 <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#F0FDF4]">
                     <i class="icon iconfont icon-xuanzhong text-[#00C753]"></i>
-                    <span class="text-[#475565] text-[14px] font-[600]">110,000+ Products</span>
+                    <span class="text-[#475565] text-[14px] font-[600]">120,000+ Products</span>
                 </div>
 
                 <div class="h-[32px] flex items-center gap-[5px] rounded-[20px] pl-[15px] pr-[15px] bg-[#EEF6FF]">

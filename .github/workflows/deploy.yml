@@ -31,6 +31,28 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nuxt3-app:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          
+      # 删除多余镜像只保留最新前五镜像
+      - name: Cleanup old Docker images
+        if: always()
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_TOKEN: ${{ secrets.DOCKER_HUB_TOKEN }}
+          IMAGE_NAME: ${{ secrets.DOCKER_HUB_USERNAME }}/newvigorbuysheet
+          KEEP_LAST: 5
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+          # 获取Docker Hub认证令牌
+          TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d '{"username":"'${DOCKER_HUB_USERNAME}'","password":"'${DOCKER_HUB_TOKEN}'"}' https://hub.docker.com/v2/users/login/ | jq -r .token)
+          # 获取所有标签并删除旧的
+          TAGS=$(curl -s -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${IMAGE_NAME}/tags/?page_size=100 | jq -r '.results | sort_by(.last_updated) | reverse | .[] | .name')
+          COUNT=0
+          for TAG in $TAGS; do
+            if [ $COUNT -ge $KEEP_LAST ]; then
+              curl -s -X DELETE -H "Authorization: JWT ${TOKEN}" https://hub.docker.com/v2/repositories/${IMAGE_NAME}/tags/${TAG}/
+            fi
+            COUNT=$((COUNT+1))
+          done
 
       # 5. 部署到宝塔服务器（替换容器镜像，用docker run创建容器）
       - name: Deploy to 宝塔服务器
